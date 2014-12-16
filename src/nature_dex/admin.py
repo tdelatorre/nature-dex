@@ -5,3 +5,4 @@ from .models import *
 
 admin.site.register(Zone, gisadmin.GeoModelAdmin)
 admin.site.register(Specimen)
+admin.site.register(SpecimenByZone)

@@ -123,3 +123,20 @@ class Specimen(models.Model):
         return _(u'specimen "{}"').format(self.scientific_name)
 
 
+class SpecimenByZone(models.Model):
+    specimen = models.ForeignKey(
+        'Specimen', blank=False, null=False,
+        verbose_name=_(u'Specimen')
+    )
+    zone = models.ForeignKey(
+        'Zone', blank=False, null=False,
+        verbose_name=_(u'Zone')
+    )
+
+    class Meta:
+        verbose_name = _(u'Specimen by zone')
+        verbose_name_plural = _(u'Specimenes by zones')
+
+    def __unicode__(self):
+        return _(u'specimen "{}" by zone "{}"').format(self.specimen, self.zone)
+
