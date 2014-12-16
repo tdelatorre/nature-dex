@@ -23,6 +23,9 @@ class Zone(gismodels.Model):
     def __unicode__(self):
         return _(u'zone "{}"').format(self.ext_ref)
 
+    def __str__(self):
+        return _(u'zone "{}"').format(self.ext_ref)
+
 
 class Specimen(models.Model):
     ext_ref = models.CharField(
@@ -122,6 +125,9 @@ class Specimen(models.Model):
     def __unicode__(self):
         return _(u'specimen "{}"').format(self.scientific_name)
 
+    def __str__(self):
+        return _(u'specimen "{}"').format(self.scientific_name)
+
 
 class SpecimenByZone(models.Model):
     specimen = models.ForeignKey(
@@ -138,5 +144,8 @@ class SpecimenByZone(models.Model):
         verbose_name_plural = _(u'Specimenes by zones')
 
     def __unicode__(self):
+        return _(u'specimen "{}" by zone "{}"').format(self.specimen, self.zone)
+
+    def __str__(self):
         return _(u'specimen "{}" by zone "{}"').format(self.specimen, self.zone)
 
