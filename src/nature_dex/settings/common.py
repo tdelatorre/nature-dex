@@ -37,6 +37,7 @@ DJANGO_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
 )
 
 THIRD_PARTY_APPS = (
@@ -68,7 +69,7 @@ WSGI_APPLICATION = 'nature_dex.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.contrib.gis.db.backends.postgis', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'nature',                       # Or path to database file if using sqlite3.
         'USER': '',                   # Not used with sqlite3.
         'PASSWORD': '',                # Not used with sqlite3.

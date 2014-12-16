@@ -2,9 +2,9 @@ from django.db import models
 from django.contrib.gis.db import models as gismodels
 from django.utils.translation import ugettext_lazy as _
 
-class Zone(models.Model):
+class Zone(gismodels.Model):
     ext_ref = models.CharField(
-        max_length=10, null=False, editable=False,
+        max_length=10, null=False,
         unique=True,
         verbose_name=_(u'External reference')
     )
@@ -13,7 +13,7 @@ class Zone(models.Model):
         default=False,
         verbose_name=_(u'Marine')
     )
-    mpoly = models.MultiPolygonField()
+    mpoly = gismodels.MultiPolygonField()
     objects = gismodels.GeoManager()
 
     class Meta:
@@ -26,13 +26,25 @@ class Zone(models.Model):
 
 class Specimen(models.Model):
     ext_ref = models.CharField(
-        max_length=50, null=False, editable=False,
+        max_length=50, null=False,
         unique=True,
         verbose_name=_(u'External reference')
     )
+    specimen_image = models.ImageField(
+        null=True, blank=True,
+        default=None, upload_to='images'
+    )
+    track_image = models.ImageField(
+        null=True, blank=True,
+        default=None, upload_to='images'
+    )
+    leaf_image = models.ImageField(
+        null=True, blank=True,
+        default=None, upload_to='images'
+    )
     common_name = models.CharField(
         max_length=255, blank=True, null=False,
-        verbose_name=_(u'Scientific name')
+        verbose_name=_(u'Common name')
     )
     scientific_name = models.CharField(
         max_length=255, blank=True, null=False,
@@ -69,6 +81,38 @@ class Specimen(models.Model):
     family = models.CharField(
         max_length=255, blank=True, null=False,
         verbose_name=_(u'Family')
+    )
+    identification = models.TextField(
+        blank=True, null=False,
+        verbose_name=_(u'Identification')
+    )
+    status = models.TextField(
+        blank=True, null=False,
+        verbose_name=_(u'Status')
+    )
+    distribution = models.TextField(
+        blank=True, null=False,
+        verbose_name=_(u'Distribution')
+    )
+    habitat = models.TextField(
+        blank=True, null=False,
+        verbose_name=_(u'Habitat')
+    )
+    diet = models.TextField(
+        blank=True, null=False,
+        verbose_name=_(u'Diet')
+    )
+    reproduction = models.TextField(
+        blank=True, null=False,
+        verbose_name=_(u'Reproduction')
+    )
+    interactions = models.TextField(
+        blank=True, null=False,
+        verbose_name=_(u'Interactions')
+    )
+    behavior = models.TextField(
+        blank=True, null=False,
+        verbose_name=_(u'Behavior')
     )
 
     class Meta:
