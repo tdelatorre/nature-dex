@@ -2,7 +2,7 @@
 
 from django.core.management.base import BaseCommand, CommandError
 
-from nature_dex.models import Specimen
+from nature_dex.models import Specimen, Zone, SpecimenByZone
 
 from optparse import make_option
 import csv
@@ -41,6 +41,7 @@ class Command(BaseCommand):
                 try:
                     fields_for_sp = self.parse_fields(row)
                     if fields_for_sp:
+                        print(u'Creating speciment')
                         Specimen.objects.create(
                             ext_ref = fields_for_sp['ext_ref'],
                             scientific_name = fields_for_sp['scientific_name'],
@@ -53,12 +54,26 @@ class Command(BaseCommand):
                             order = fields_for_sp['order'],
                             family = fields_for_sp['family'],
                         )
+
                 except Exception as ex:
                     print(u'**ERROR {}'.format(str(ex)))
+
+                finally:
+                    if fields_for_sp:
+                        zone = Zone.objects.filter(ext_ref=fields_for_sp['ref_zone'])
+                        specimen = Specimen.objects.filter(ext_ref=fields_for_sp['ext_ref'])
+
+                        if zone[0] and specimen[0]:
+                            print(u'Creating speciment by zone')
+                            SpecimenByZone.objects.create(
+                                specimen = specimen[0],
+                                zone = zone[0],
+                            )
 
 
     def parse_fields(self, row):
         fields_for_sp = {
+            'ref_zone': row['CUTM10x10'],
             'ext_ref': row['IdEspecie'],
             'scientific_name': row['Nombre'],
             'group': row['Grupo'],

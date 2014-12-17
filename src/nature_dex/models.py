@@ -24,7 +24,7 @@ class Zone(gismodels.Model):
         return _(u'zone "{}"').format(self.ext_ref)
 
     def __str__(self):
-        return _(u'zone "{}"').format(self.ext_ref)
+        return _(u'{}').format(self.ext_ref)
 
 
 class Specimen(models.Model):
@@ -126,7 +126,7 @@ class Specimen(models.Model):
         return _(u'specimen "{}"').format(self.scientific_name)
 
     def __str__(self):
-        return _(u'specimen "{}"').format(self.scientific_name)
+        return _(u'{}').format(self.scientific_name)
 
 
 class SpecimenByZone(models.Model):
