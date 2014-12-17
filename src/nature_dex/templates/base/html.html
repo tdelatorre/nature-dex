@@ -20,7 +20,7 @@
     {% block generalscripts %}
     <script src="{% static 'js/general.js' %}"></script>
     {% endblock %}
-    
+
     {% block object %}
     <script src="{% static 'js/app.js' %}"></script>
     {% endblock %}
@@ -34,10 +34,11 @@
 
 		<div data-role="panel" id="panelmenu" data-id="panelmenu1" data-position="right" data-position-fixed="true" data-display="overlay">
 			<ul data-role="listview" data-inset="true">
-				<li><a href="#menu" class="panelmenu-link">Texto de prueba menu 1</a></li>
-				<li><a href="#menu" class="panelmenu-link">Texto de prueba menu 2</a></li>
-				<li><a href="#menu" class="panelmenu-link">Texto de prueba menu 3</a></li>
-				<li><a href="#menu" class="panelmenu-link">Texto de prueba menu 4</a></li>
+				<li data-role="list-divider"><a href="#menu" class="panelmenu-link">Animales</a></li>
+                <li><a href="#menu" class="panelmenu-link">Mamíferos</a></li>
+                <li><a href="#menu" class="panelmenu-link">Aves</a></li>
+                <li><a href="#menu" class="panelmenu-link">Reptiles</a></li>
+                <li data-role="list-divider"><a href="#menu" class="panelmenu-link">Plantas</a></li>
 			</ul>
 		</div>
 
@@ -77,6 +78,6 @@
 
 	</div>
 	<!-- /page -->
-	
+
 </body>
 </html>
