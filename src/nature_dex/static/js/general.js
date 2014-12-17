@@ -17,7 +17,7 @@
         /**
          *  Search panel functionality
          * */
-        var $panelSearch = $( '#panelsearch' );
+        var $panelSearch = $( '.panelsearch' );
 
         $panelSearch
         .addClass( 'eventattached' )
@@ -29,7 +29,7 @@
         /**
          *  Menu panel functionality
          * */
-        var $panelMenu = $( '#panelmenu' );
+        var $panelMenu = $( '.panelmenu' );
         
         $panelMenu
         .addClass( 'eventattached' )
