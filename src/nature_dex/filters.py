@@ -6,8 +6,8 @@ from django.contrib.gis.measure import D
 
 
 class SpecimenByZoneFilter(filters.BaseFilterBackend):
-    # Example url with filter http://localhost:8000/specimenes/?lon=-3.6713546&lat=40.4360407
-    # Example filter also with filter group http://localhost:8000/specimenes/?lon=-3.6713546&lat=40.4360407&group=Aves
+    # Example url with filter http://localhost:8000/api/specimenes/?lon=-3.6713546&lat=40.4360407
+    # Example filter also with filter group http://localhost:8000/api/specimenes/?lon=-3.6713546&lat=40.4360407&group=Aves
     def filter_queryset(self, request, queryset, view):
         lat = request.QUERY_PARAMS.get('lat', None)
         lon = request.QUERY_PARAMS.get('lon', None)
