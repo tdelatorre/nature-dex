@@ -9,6 +9,7 @@ src/nature_dex/settings/local.py
 
 # Distribution / packaging
 .Python
+venv/
 env/
 bin/
 build/
