@@ -1,0 +1,24 @@
+/* PANELS */
+/* PANELS ANIMATION */
+.ui-header {
+  height: 42px !important;
+}
+.ui-header h1.ui-title {
+  display: inline-block;
+  float: left !important;
+  margin: auto;
+}
+.ui-header a.toolbar-btn {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  margin: 0 !important;
+  border: none;
+  float: right;
+  display: block !important;
+  border-radius: 0 !important;
+  text-indent: 9999em;
+  position: relative;
+  top: 0;
+  right: 0;
+}

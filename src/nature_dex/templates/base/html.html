@@ -1,0 +1,82 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{% block title %} My Site Title {% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'js/lib/jquerymobile/jquery.mobile.custom.structure.min.css' %}">
+    <link rel="stylesheet" href="{% static 'js/lib/jquerymobile/jquery.mobile.custom.theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <script src="{% static 'js/lib/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'js/lib/jquery/jquery.rest.js' %}"></script>
+    <script src="{% static 'js/lib/jquerymobile/jquery.mobile.custom.min.js' %}"></script>
+    <script src="{% static 'js/lib/base.js' %}"></script>
+    <script src="{% static 'js/lib/classes.js' %}"></script>
+
+    {% block generalscripts %}
+    <script src="{% static 'js/general.js' %}"></script>
+    {% endblock %}
+    
+    {% block object %}
+    <script src="{% static 'js/app.js' %}"></script>
+    {% endblock %}
+
+</head>
+<body>
+
+	<div data-role="page">
+
+		{% block panelmenu %}
+
+		<div data-role="panel" id="panelmenu" data-id="panelmenu1" data-position="right" data-position-fixed="true" data-display="overlay">
+			<ul data-role="listview" data-inset="true">
+				<li><a href="#menu" class="panelmenu-link">Texto de prueba menu 1</a></li>
+				<li><a href="#menu" class="panelmenu-link">Texto de prueba menu 2</a></li>
+				<li><a href="#menu" class="panelmenu-link">Texto de prueba menu 3</a></li>
+				<li><a href="#menu" class="panelmenu-link">Texto de prueba menu 4</a></li>
+			</ul>
+		</div>
+
+		{% endblock %}
+
+		{% block panelsearch %}
+
+		<div data-role="panel" id="panelsearch" data-id="panelsearch1" data-position="right" data-position-fixed="true" data-display="overlay" class="ui-btn-active ui-state-persist">
+			<ul data-role="listview" data-inset="true" data-filter="true">
+				<li><a href="#search" class="panelsearch-link">Mamíferos</a></li>
+				<li><a href="#search" class="panelsearch-link">Huellas</a></li>
+				<li><a href="#search" class="panelsearch-link">Invertebrados</a></li>
+			</ul>
+		</div>
+
+		{% endblock %}
+
+		{% block header %}
+
+		<div data-role="header" data-id="header1" data-position-fixed="true" class="ui-btn-active ui-state-persist">
+			<h1><a href="/" title="Home">Home</a></h1>
+			<a href="#panelmenu" class="toolbar-btn btn-panelmenu ui-btn ui-corner-all ui-icon-bars ui-nodisc-icon ui-btn-right">Menu</a>
+			<a href="#panelsearch" class="toolbar-btn btn-panelsearch ui-btn ui-corner-all ui-icon-search ui-nodisc-icon ui-btn-right">Search</a>
+		</div><!-- /header -->
+
+		{% endblock %}
+
+		{% block content %}{% endblock %}
+
+		{% block footer %}
+
+		<div data-role="footer">
+			...
+		</div>
+
+		{% endblock %}
+
+	</div>
+	<!-- /page -->
+	
+</body>
+</html>

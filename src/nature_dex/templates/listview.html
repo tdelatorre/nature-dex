@@ -1,0 +1,19 @@
+{% extends "base/html.html" %}
+{% load staticfiles %}
+
+{% block object %}
+<script src="{% static 'js/listview.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<div data-role="content">
+
+    <ul data-role="listview" data-inset="true">
+        <li><a href="/listview">Herbage</a></li>
+        <li><a href="/listview">Wildlife</a></li>
+    </ul>
+
+</div><!-- /content -->
+
+{% endblock %}
