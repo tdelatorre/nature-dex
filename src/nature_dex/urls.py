@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
 
-    url(r'^', include(router.urls)),
+    url(r'^api/', include(router.urls)),
     url(r'^admin/', include(gisadmin.site.urls)),
     url(r'^file/', TemplateView.as_view(template_name='file.html'), name='file'),
     url(r'^listview/', TemplateView.as_view(template_name='listview.html'), name='file'),
