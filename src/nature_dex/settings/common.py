@@ -41,6 +41,7 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
+    'rest_framework',
 )
 
 LOCAL_APPS = (
@@ -114,3 +115,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
+
+
+# Rest framework
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'PAGINATE_BY': 10
+}
