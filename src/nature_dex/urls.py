@@ -13,11 +13,6 @@ router.register(r'^groups', GroupViewSet, 'groups')
 from django.views.generic import TemplateView
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'nature.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
-
     url(r'^api/', include(router.urls)),
     url(r'^admin/', include(gisadmin.site.urls)),
     url(r'^file/', TemplateView.as_view(template_name='file.html'), name='file'),
