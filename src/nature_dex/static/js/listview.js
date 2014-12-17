@@ -1,4 +1,4 @@
-/* global jQuery, Position, console */
+/* global jQuery, console */
 (function ( $ ) {
     'use strict';
 
@@ -7,22 +7,25 @@
     .on( 'pagebeforechange', onListViewBeforeChange)
     .on( 'pagecontainershow', onListViewContainerShow);
 
-    function obListViewBeforeChange (event, data) {
+    function onListViewBeforeChange (event, data) {
         console.log( 'listview.pagebeforechange:' , data);
         console.log( 'Data: ', $.mobile.path.parseUrl( data.toPage ) );
     }
 
     function onListViewContainerShow () {
-        
+
         console.log( 'app.pagecontainershow' );
 
-        $( 'button.btn-whereami' ).off().on( 'click', function ( event ) {
-            Position.whereami();
-        });
+        // Función por defecto de los enlaces
+        $( '#listview' )
+        .find( 'a' ).off().on( 'click' , function ( event ) {
 
-        // Función por defecto de los enlaces [res="external"]
-        $( 'a[rel="external"]' ).off().on( 'click' , function ( event ) {
+            event.preventDefault();
 
+            console.log( 'A la ficha!' );
+
+            // Navigation
+            $.mobile.changePage( window.location.protocol + '//' + window.location.host +  '/file/', true);
         });
     }
 

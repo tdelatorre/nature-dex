@@ -1,6 +1,11 @@
 /* global jQuery */
-(function ( $ ) {
+(function ( scope, $ ) {
     'use strict';
+
+    // TODO: Sacar la configuración incil de aquí...
+    window.conf = {
+        
+    }
 
     var _count = 0;
 
@@ -50,4 +55,4 @@
         .on( 'pagecontainershow', generalFunctionality);
     }
 
-})( jQuery )
+})( window, jQuery )
