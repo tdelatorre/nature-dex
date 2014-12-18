@@ -12,6 +12,9 @@
         // Render data
         var data = Services.getLoadedList();
 
+        var title = data.label;
+        _$view.find( 'h1.title' ).html( title );
+
         if ( data.specimenes.previous === null) {
             _page = 1;
         }

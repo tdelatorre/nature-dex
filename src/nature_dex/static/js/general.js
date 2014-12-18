@@ -35,7 +35,14 @@
         /**
          *  Menu panel functionality
          * */
-        var $panelMenu = $( '.panelmenu' );
+        var $panelMenu = $( '.panelmenu' ).panel({
+            beforeopen: function () {
+                $('.btn-panelmenu').addClass( 'selected' );
+            },
+            close: function () {
+                $('.btn-panelmenu').removeClass( 'selected' );
+            }
+        });
 
         $panelMenu
         .addClass( 'eventattached' )
@@ -44,8 +51,8 @@
 
     function panelMenuLinkClick ( event ) {
         event.preventDefault();
-        var kingdom = $(event.target).data('kingdom')
-        var group = $(event.target).data('group')
+        var kingdom = $(event.target).data('kingdom');
+        var group = $(event.target).data('group') !== '' ? $(event.target).data('group') : undefined;
         SeeAll.seeall(group, kingdom);
     }
 

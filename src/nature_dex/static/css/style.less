@@ -56,13 +56,21 @@ hmtl, body {
 			&.btn-panelmenu {
 				background-image: url('../images/sprite.png');
 				background-position: -388px -26px;
-				background-color: transparent; 
+				background-color: transparent;
+
+				&.selected {
+					background-position: 194px -26px;
+				}
 			}
 
 			&.btn-panelsearch {
 				background-image: url('../images/sprite.png');
 				background-position: -265px -29px;
 				background-color: transparent; 	
+
+				&.selected {
+					background-position: 314px -26px;
+				}
 			}
 		}
 	}
@@ -97,7 +105,7 @@ hmtl, body {
 			}
 
 			&.small {
-				width: 120px;
+				width: 110px;
 			}
 		}
 	}
@@ -121,8 +129,160 @@ hmtl, body {
 	
 }
 
-#listview {
+// PanelMenu [#panelmenu] 
+
+#panelmenu {
+	top: 64px;
+	box-shadow: none;
+
+	ul {
+		box-shadow: none;
+	}
+
+	li {
+		background-color: transparent;
+		border: none;
+		box-shadow: none;
+		padding: 0;
+		margin: 0;
+
+		&.kingdom-menu {
+			
+			a {
+				margin-left: 0;
+			}
+		}
+
+		a {
+			display: block;
+			text-decoration: none;
+			background-color: transparent;
+			border: none;
+			color: #25282f;
+			font-weight: lighter;
+			border-bottom: 2px solid #b8d0d3;
+			padding: 0;
+			margin: 0;
+			height: 45px;
+			line-height: 45px;
+			margin-left: 30px;
+			-webkit-tap-highlight-color: transparent;
+
+
+			&.ui-btn-icon-right,
+			&.ui-btn-icon-right:after {
+				background-color: transparent;
+			}
+		}
+	}
+}
+
+// PanelSearch [#panelsearch] 
+
+#panelsearch {
+	top: 64px;
+	box-shadow: none;
+}
+
+// File [#file] 
+
+#file {
+
+	div {
+
+		&.specimentImageContent {
+			padding: 10px;
+			border-top: 2px solid #25282f;
+
+			img {
+				margin: auto;
+				display: block;
+			}
+		}
+
+		&.info {
+			width: 50%;
+			float: left;
+
+			p {
+				color: #7fb58b;
+
+				span {
+					color: #b8d0d3;
+				}
+			}
+		}
+
+		&.trackImageContent {
+			width: 50%;
+			float: right;
+			padding: 10px;
+			box-sizing: border-box;
+			
+			img {
+				display: block;
+				width: 100%;
+			}
+
+			p {
+				color: #7fb58b;
+				background-color: #25282f;
+				width: 100%;
+				height: 45px;
+				line-height: 45px;
+				padding: 0 0.5em;
+				box-sizing: border-box;
+				margin: 0px;
+			}
+		}
+	}
+
+	h1, h2 {
+		text-align: center;
+	}
 	
+	h1 {
+		color: #7fb58b;
+		margin: 0;
+	}
+
+	h2 {
+		color: #b8d0d3;
+		text-align: center;
+		margin: 0 0 0.5em 0;
+		font-style: oblique;
+		font-weight: lighter;
+	}
+}
+
+
+// ListView [#listview]
+
+#listview {
+
+	div {
+
+		&.pagination {
+			width: 320px;
+			margin: auto;
+			height: 42px;
+			line-height: 42px;
+
+			div {
+				float: left;
+				display: block;
+				margin: 0 10px;
+				font-size: 0.8em;
+				text-shadow: none;
+				color: #b8d0d3;
+			}
+
+			button {
+				float: left;
+			}
+		}
+	} 
+
 	// Listas
 	ul {
 
@@ -140,9 +300,14 @@ hmtl, body {
 				padding-top: 10px;
 				margin-bottom: 26px;
 
+				a {
+					text-decoration: none;
+				}
+
 				h3 {
 					text-align: left;
 					padding: 0 1em;
+					color: #7fb58b;
 				}
 
 				p {

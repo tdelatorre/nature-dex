@@ -53,10 +53,16 @@ html body .ui-group-theme-a .ui-bar-inherit {
   background-position: -388px -26px;
   background-color: transparent;
 }
+.ui-header a.toolbar-btn.btn-panelmenu.selected {
+  background-position: 194px -26px;
+}
 .ui-header a.toolbar-btn.btn-panelsearch {
   background-image: url('../images/sprite.png');
   background-position: -265px -29px;
   background-color: transparent;
+}
+.ui-header a.toolbar-btn.btn-panelsearch.selected {
+  background-position: 314px -26px;
 }
 .ui-content {
   background-color: #31363f;
@@ -79,7 +85,7 @@ html body .ui-group-theme-a .ui-bar-inherit {
   width: 90%;
 }
 .ui-content button.btn-custom.small {
-  width: 120px;
+  width: 110px;
 }
 .ui-content img.location {
   width: 100%;
@@ -95,6 +101,116 @@ html body .ui-group-theme-a .ui-bar-inherit {
   text-shadow: none;
 }
 /* PANELS */
+#panelmenu {
+  top: 64px;
+  box-shadow: none;
+}
+#panelmenu ul {
+  box-shadow: none;
+}
+#panelmenu li {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+#panelmenu li.kingdom-menu a {
+  margin-left: 0;
+}
+#panelmenu li a {
+  display: block;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  color: #25282f;
+  font-weight: lighter;
+  border-bottom: 2px solid #b8d0d3;
+  padding: 0;
+  margin: 0;
+  height: 45px;
+  line-height: 45px;
+  margin-left: 30px;
+  -webkit-tap-highlight-color: transparent;
+}
+#panelmenu li a.ui-btn-icon-right,
+#panelmenu li a.ui-btn-icon-right:after {
+  background-color: transparent;
+}
+#panelsearch {
+  top: 64px;
+  box-shadow: none;
+}
+#file div.specimentImageContent {
+  padding: 10px;
+  border-top: 2px solid #25282f;
+}
+#file div.specimentImageContent img {
+  margin: auto;
+  display: block;
+}
+#file div.info {
+  width: 50%;
+  float: left;
+}
+#file div.info p {
+  color: #7fb58b;
+}
+#file div.info p span {
+  color: #b8d0d3;
+}
+#file div.trackImageContent {
+  width: 50%;
+  float: right;
+  padding: 10px;
+  box-sizing: border-box;
+}
+#file div.trackImageContent img {
+  display: block;
+  width: 100%;
+}
+#file div.trackImageContent p {
+  color: #7fb58b;
+  background-color: #25282f;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  padding: 0 0.5em;
+  box-sizing: border-box;
+  margin: 0px;
+}
+#file h1,
+#file h2 {
+  text-align: center;
+}
+#file h1 {
+  color: #7fb58b;
+  margin: 0;
+}
+#file h2 {
+  color: #b8d0d3;
+  text-align: center;
+  margin: 0 0 0.5em 0;
+  font-style: oblique;
+  font-weight: lighter;
+}
+#listview div.pagination {
+  width: 320px;
+  margin: auto;
+  height: 42px;
+  line-height: 42px;
+}
+#listview div.pagination div {
+  float: left;
+  display: block;
+  margin: 0 10px;
+  font-size: 0.8em;
+  text-shadow: none;
+  color: #b8d0d3;
+}
+#listview div.pagination button {
+  float: left;
+}
 #listview ul li img {
   margin-top: 10px;
 }
@@ -106,9 +222,13 @@ html body .ui-group-theme-a .ui-bar-inherit {
   padding-top: 10px;
   margin-bottom: 26px;
 }
+#listview ul li.ui-btn a {
+  text-decoration: none;
+}
 #listview ul li.ui-btn h3 {
   text-align: left;
   padding: 0 1em;
+  color: #7fb58b;
 }
 #listview ul li.ui-btn p {
   text-align: left;
