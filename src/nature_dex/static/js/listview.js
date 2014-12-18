@@ -46,8 +46,8 @@
                 html += '        <div class="ui-btn-text">';
                 html += '            <a href="#" class="ui-link-inherit" data-specimen-id="' + specimenId + '">';
                 html += '                <img src="' + image + '" class="ui-li-thumb">';
-                html += '                <h3 class="ui-li-heading">' + scientificName + '</h3>';
-                html += '                <p class="ui-li-desc">' + commonName + '</p>';
+                html += '                <h3 class="ui-li-heading">' + commonName + '</h3>';
+                html += '                <p class="ui-li-desc">' + scientificName + '</p>';
                 html += '            </a>';
                 html += '        </div>';
                 html += '        <span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>';
