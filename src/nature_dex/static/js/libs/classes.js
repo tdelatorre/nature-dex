@@ -23,17 +23,33 @@
                     lat: position.coords.latitude,
                     lon: position.coords.longitude
                 };
+            });
+        }
+    });
 
-                Specimenes.getSpecimenes(position['lon'], position['lat'], group, kingdom);
+    var SeeAll = new Klass();
+    SeeAll.extend({
+        seeall: function () {
+            // Showing loader
 
-                // Navigation
-                $.mobile.changePage( 'listview/' , {
-                    type: 'get',
-                    data: {
-                        label: 'herbage',
-                        position: position.coords
-                    }
+            navigator.geolocation.getCurrentPosition( function ( position ) {
+                position = {
+                    lat: position.coords.latitude,
+                    lon: position.coords.longitude
+                };
+
+                var promise = Specimenes.getSpecimenes(position['lon'], position['lat'], group, kingdom);
+                promise.done(function ( specimenes ) {
+                    // Navigation
+                    $.mobile.changePage( 'listview/' , {
+                        type: 'get',
+                        data: {
+                            label: 'Ver todo',
+                            specimenes: specimenes
+                        }
+                    });
                 });
+
             });
         }
     });
@@ -43,14 +59,13 @@
         data: {},
         getSpecimenes: function (lon, lat, group, kingdom) {
             client.add('specimenes');
-            client.specimenes.read({
+            return client.specimenes.read({
                 lon: lon,
                 lat: lat,
                 group: group,
                 kingdom: kingdom
-            }).done(function ( data ) {
-                Specimenes.data = data;
-            });
+            })
+
         }
     })
 
@@ -66,6 +81,7 @@
     })
 
     scope.Position = Position;
+    scope.SeeAll = SeeAll;
     scope.Specimenes = Specimenes;
 
 })( window, jQuery );

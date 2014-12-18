@@ -14,6 +14,10 @@
             Position.whereami();
         });
 
+        $( 'button.btn-see-all' ).off( 'click' ).on( 'click', function ( event ) {
+            SeeAll.seeall();
+        });
+
         // Función por defecto de los enlaces [res="external"]
         $( 'a[rel="external"]' ).off( 'click' ).on( 'click' , function ( event ) {
 
