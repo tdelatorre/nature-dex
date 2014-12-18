@@ -20,18 +20,18 @@
                 SeeAll.seeall();
             });
 
-        switch(Services.viewName){
-            case 'listview':
-                Services.view = ListView;
-                ListView.init();
-                break;
-            case 'file':
-                Services.view = Ficha;
-                Ficha.init();
-                break;
-            default:
-                break;
-        }
+            "prueba de cosas";
+            "prueba de cosas";
+            "prueba de cosas";
+            "prueba de cosas";
+            "prueba de cosas";
+            "prueba de cosas";
+            "prueba de cosas";
+            "prueba de cosas";
+            "prueba de cosas";
+            "prueba de cosas";
+            "prueba de cosas";
+            "prueba de cosas";
     });
 
     function appBeforeChange (event, data) {
