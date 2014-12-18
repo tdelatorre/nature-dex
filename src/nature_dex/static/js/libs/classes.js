@@ -22,6 +22,9 @@
                     lat: position.coords.latitude,
                     lon: position.coords.longitude
                 };
+
+                $( 'button.btn-whereami' ).hide()
+                $('img').attr('src', "http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=600x200&maptype=terrain&markers=color:red%7C" + position['lat'] + "," + position['lon'] + "&sensor=false")
             });
         }
     });
