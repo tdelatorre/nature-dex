@@ -12,13 +12,13 @@
         loadedFile: null,
         loadedView: null,
         getLoadedList: function () {
-            return this.loadedList;
+            return Services.loadedList;
         },
         getLoadedFile: function () {
-            return this.loadedFile;
+            return Services.loadedFile;
         },
         getLoadedView: function () {
-            return this.loadedView;
+            return Services.loadedView;
         },
         getLocation: function () {
             return window.location.protocol + '//' + window.location.host + '/';
@@ -41,8 +41,8 @@
                     lon: position.coords.longitude
                 };
 
-                $( 'button.btn-whereami' ).hide()
-                $('img').attr('src', "http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=600x200&maptype=terrain&markers=color:red%7C" + _position['lat'] + "," + _position['lon'] + "&sensor=false")
+                $( 'button.btn-whereami' ).hide();
+                $('img').attr('src', 'http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=600x200&maptype=terrain&markers=color:red%7C' + _position['lat'] + ',' + _position['lon'] + '&sensor=false');
             });
         }
     });
@@ -62,6 +62,8 @@
                 var promise = Specimenes.getSpecimenes(_position['lon'], _position['lat'], group, kingdom);
                 promise.done(function ( specimenes ) {
 
+                    SeeAll.lastData = specimenes;
+
                     Services.loadedList = {
                         label: 'Ver todo',
                         specimenes: specimenes
@@ -69,10 +71,58 @@
 
                     // Navigation
 
-                    $.mobile.changePage( Services.getLocation() + 'listview/' , {
+                    $.mobile.changePage( Services.getLocation() + 'listview/?rand=' + Math.random() * 1000 , {
                         type: 'get'
                     });
                 });
+            });
+        },
+        next: function ( callback ) {
+
+            if ( SeeAll.lastData.hasOwnProperty('next') ) {
+                if (SeeAll.lastData.next === null ) {
+                    callback( false );
+                    return;
+                }
+            }
+
+            var promise = $.get( SeeAll.lastData.next )
+            promise.done(function ( data ) {
+
+                console.log( 'SeeAll::next: ', data );
+
+                SeeAll.lastData = data;
+
+                Services.loadedList = {
+                    label: 'Ver todo',
+                    specimenes: data
+                }
+
+                callback( data );
+            });
+        },
+        prev: function ( callback ) {
+
+            if ( SeeAll.lastData.hasOwnProperty('previous') ) {
+                if ( SeeAll.lastData.previous === null ) {
+                    callback( false );
+                    return;
+                }
+            }
+
+            var promise = $.get( SeeAll.lastData.previous )
+            promise.done(function ( data ) {
+
+                console.log( 'SeeAll::previous: ', data );
+
+                SeeAll.lastData = data;
+
+                Services.loadedList = {
+                    label: 'Ver todo',
+                    specimenes: data
+                }
+
+                callback( data );
             });
         }
     });

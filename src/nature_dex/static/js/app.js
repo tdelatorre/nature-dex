@@ -2,9 +2,6 @@
 (function ( $ ) {
     'use strict';
 
-    var _viewName = null,
-        _view = null;
-
     $( document )
     .off( 'pagebeforechange', appBeforeChange )
     .on( 'pagebeforechange', appBeforeChange )
@@ -23,13 +20,13 @@
                 SeeAll.seeall();
             });
 
-        switch(_viewName){
+        switch(Services.viewName){
             case 'listview':
-                _view = ListView;
+                Services.view = ListView;
                 ListView.init();
                 break;
             case 'file':
-                _view = Ficha;
+                Services.view = Ficha;
                 Ficha.init();
                 break;
             default:
@@ -49,7 +46,7 @@
 
         var $page = $(data.toPage[0]);
         console.log( 'Página cargada: ', $page.find('.ui-content').attr('id') );
-        _viewName = $page.find('.ui-content').attr('id');
+        Services.viewName = $page.find('.ui-content').attr('id');
     }
 
 })( jQuery );
