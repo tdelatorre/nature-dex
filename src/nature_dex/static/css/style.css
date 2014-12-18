@@ -34,6 +34,9 @@ html body .ui-group-theme-a .ui-bar-inherit {
   border: none;
   box-shadow: none;
 }
+.ui-header a.logo:hover {
+  background-color: transparent;
+}
 .ui-header a.toolbar-btn {
   width: 63px;
   height: 63px;
