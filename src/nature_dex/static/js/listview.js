@@ -29,7 +29,7 @@
 
         if (!data.specimenes.results.length) {
             var html = '<p>No hemos encontrado nada</p>';
-            $( '#listview' ).append( html );
+            $( '#content-list' ).append( html );
 
         } else {
             for ( var specimen in data.specimenes.results) {
