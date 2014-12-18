@@ -38,7 +38,7 @@
                 };
 
                 $( 'button.btn-whereami' ).hide()
-                $('img').attr('src', "http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=600x200&maptype=terrain&markers=color:red%7C" + position['lat'] + "," + position['lon'] + "&sensor=false")
+                $('img').attr('src', "http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=400x100&maptype=terrain&markers=color:red%7C" + position['lat'] + "," + position['lon'] + "&sensor=false")
             });
         }
     });
