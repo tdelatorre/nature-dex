@@ -2,7 +2,6 @@
 (function ( scope, $ ) {
     'use strict';
 
-    var client = new $.RestClient('/api/');
     var position = {};
     var group = '';
     var kingdom = '';
@@ -29,7 +28,7 @@
 
     var SeeAll = new Klass();
     SeeAll.extend({
-        seeall: function () {
+        seeall: function (group, kingdom) {
             // Showing loader
 
             navigator.geolocation.getCurrentPosition( function ( position ) {
@@ -58,6 +57,7 @@
     Specimenes.extend({
         data: {},
         getSpecimenes: function (lon, lat, group, kingdom) {
+            var client = new $.RestClient('/api/');
             client.add('specimenes');
             return client.specimenes.read({
                 lon: lon,
@@ -73,6 +73,7 @@
     SpecimenById.extend({
         data: {},
         getSpecimenById: function (specimenId) {
+            var client = new $.RestClient('/api/');
             client.add('specimenes');
             client.specimenes.read(specimenId).done(function ( data ) {
                 SpecimenById.data = data;

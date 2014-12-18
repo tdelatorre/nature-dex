@@ -4,7 +4,7 @@
 
     // TODO: Sacar la configuración incil de aquí...
     window.conf = {
-        
+
     }
 
     var _count = 0;
@@ -35,7 +35,7 @@
          *  Menu panel functionality
          * */
         var $panelMenu = $( '.panelmenu' );
-        
+
         $panelMenu
         .addClass( 'eventattached' )
         .find('a.panelmenu-link').off( 'click' ).on( 'click', panelMenuLinkClick);
@@ -43,7 +43,9 @@
 
     function panelMenuLinkClick ( event ) {
         event.preventDefault();
-        console.log( 'Menu option selected' );
+        var kingdom = $(event.target).data('kingdom')
+        var group = $(event.target).data('group')
+        SeeAll.seeall(group, kingdom);
     }
 
     function pageChange () {
