@@ -2,10 +2,10 @@
 (function ( scope, $ ) {
     'use strict';
 
-    var ListView = new Klass();
-    ListView.extend({
+    var Ficha = new Klass();
+    Ficha.extend({
         init: function () {
-            console.log( 'ListView::init' );
+            console.log( 'Ficha::init' );
 
             // Render data
             var data = Services.getLoadedData();
@@ -51,7 +51,7 @@
         }
     });
 
-    if ( !('ListView' in scope) )
-        scope.ListView = ListView;
+    if ( !('Ficha' in scope) )
+        scope.Ficha = Ficha;
 
 })( window, jQuery );

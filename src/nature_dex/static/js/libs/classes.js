@@ -6,6 +6,20 @@
     var group = '';
     var kingdom = '';
 
+    var Services = new Klass();
+    Services.extend({
+        loadedData: null,
+        loadedView: null,
+        getLoadedData: function () {
+            return this.loadedData;
+        },
+        getLoadedView: function () {
+            return this.loadedView;
+        },
+        getLocation: function () {
+            return window.location.protocol + '//' + window.location.host + '/';
+        }
+    });
 
     var Position = new Klass();
     Position.extend({
@@ -31,6 +45,7 @@
 
     var SeeAll = new Klass();
     SeeAll.extend({
+        lastData: {},
         seeall: function (group, kingdom) {
             // Showing loader
 
@@ -42,16 +57,18 @@
 
                 var promise = Specimenes.getSpecimenes(position['lon'], position['lat'], group, kingdom);
                 promise.done(function ( specimenes ) {
+
+                    Services.loadedData = {
+                        label: 'Ver todo',
+                        specimenes: specimenes
+                    }
+
                     // Navigation
+
                     $.mobile.changePage( 'listview/' , {
-                        type: 'get',
-                        data: {
-                            label: 'Ver todo',
-                            specimenes: specimenes
-                        }
+                        type: 'get'
                     });
                 });
-
             });
         }
     });
@@ -70,7 +87,7 @@
             })
 
         }
-    })
+    });
 
     var SpecimenById = new Klass();
     SpecimenById.extend({
@@ -82,10 +99,15 @@
                 SpecimenById.data = data;
             });
         }
-    })
+    });
 
-    scope.Position = Position;
-    scope.SeeAll = SeeAll;
-    scope.Specimenes = Specimenes;
+    if ( !('Position' in scope) )
+        scope.Position = Position;
+    if ( !('SeeAll' in scope) )
+        scope.SeeAll = SeeAll;
+    if ( !('Specimenes' in scope) )
+        scope.Specimenes = Specimenes;
+    if ( !('Services' in scope) )
+        scope.Services = Services;
 
 })( window, jQuery );

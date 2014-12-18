@@ -8,6 +8,7 @@
     }
 
     var _count = 0;
+    var _menuData = {};
 
     $( document ).on( 'pagecontainershow', generalFunctionality);
 

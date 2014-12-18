@@ -17,12 +17,13 @@
     <script src="{% static 'js/libs/base.js' %}"></script>
     <script src="{% static 'js/libs/classes.js' %}"></script>
 
-    {% block generalscripts %}
-    <script src="{% static 'js/general.js' %}"></script>
-    {% endblock %}
-
     {% block object %}
     <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/listview.js' %}"></script>
+    {% endblock %}
+
+    {% block generalscripts %}
+    <script src="{% static 'js/general.js' %}"></script>
     {% endblock %}
 
 </head>
