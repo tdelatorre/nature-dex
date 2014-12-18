@@ -64,7 +64,7 @@
 		{% block header %}
 
 		<div data-role="header" data-id="header1" data-position-fixed="true" class="ui-btn-active ui-state-persist">
-			<h1><a href="/" title="Home">Home</a></h1>
+			<a href="/" title="Home" class="logo"></a>
 			<a href="#panelmenu" class="toolbar-btn btn-panelmenu ui-btn ui-corner-all ui-icon-bars ui-nodisc-icon ui-btn-right">Menu</a>
 			<a href="#panelsearch" class="toolbar-btn btn-panelsearch ui-btn ui-corner-all ui-icon-search ui-nodisc-icon ui-btn-right">Search</a>
 		</div><!-- /header -->
@@ -72,14 +72,6 @@
 		{% endblock %}
 
 		{% block content %}{% endblock %}
-
-		{% block footer %}
-
-		<div data-role="footer">
-			...
-		</div>
-
-		{% endblock %}
 
 	</div>
 	<!-- /page -->

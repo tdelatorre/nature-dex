@@ -40,14 +40,16 @@
                 var specimenId = obj.id;
                 var commonName = obj.common_name;
                 var scientificName = obj.scientific_name;
+                var identification = obj.identification;
                 var html = '';
-                html += '<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">';
+                html += '<li data-theme="c" class="ui-btn ui-li ui-li-has-thumb ui-btn-up-c">';
                 html += '    <div class="ui-btn-inner ui-li" aria-hidden="true">';
                 html += '        <div class="ui-btn-text">';
                 html += '            <a href="#" class="ui-link-inherit" data-specimen-id="' + specimenId + '">';
-                html += '                <img src="' + image + '" class="ui-li-thumb">';
+                html += '                <div class="thumb-content" style="background-image: url(' + image + ')"></div>';
                 html += '                <h3 class="ui-li-heading">' + commonName + '</h3>';
                 html += '                <p class="ui-li-desc">' + scientificName + '</p>';
+                html += '                <p class="ui-li-desc">' + identification + '</p>';
                 html += '            </a>';
                 html += '        </div>';
                 html += '        <span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>';

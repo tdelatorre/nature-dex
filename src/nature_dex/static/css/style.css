@@ -1,16 +1,42 @@
-/* PANELS */
-/* PANELS ANIMATION */
+hmtl,
+body {
+  background-color: #008067;
+  border-color: #008067;
+}
+/* header */
+.ui-bar-a,
+.ui-page-theme-a .ui-bar-inherit,
+html .ui-bar-a .ui-bar-inherit,
+html .ui-body-a .ui-bar-inherit,
+html body .ui-group-theme-a .ui-bar-inherit {
+  background-color: #008067;
+  border-color: #008067;
+  height: 63px !important;
+}
 .ui-header {
-  height: 42px !important;
+  height: 63px !important;
 }
 .ui-header h1.ui-title {
   display: inline-block;
   float: left !important;
   margin: auto;
 }
+.ui-header a.logo {
+  width: 239px;
+  height: 63px;
+  background-image: url('../images/sprite.png');
+  background-position: 0px -25px;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
 .ui-header a.toolbar-btn {
-  width: 42px;
-  height: 42px;
+  width: 63px;
+  height: 63px;
   padding: 0;
   margin: 0 !important;
   border: none;
@@ -21,4 +47,78 @@
   position: relative;
   top: 0;
   right: 0;
+}
+.ui-header a.toolbar-btn.btn-panelmenu {
+  background-image: url('../images/sprite.png');
+  background-position: -388px -26px;
+  background-color: transparent;
+}
+.ui-header a.toolbar-btn.btn-panelsearch {
+  background-image: url('../images/sprite.png');
+  background-position: -265px -29px;
+  background-color: transparent;
+}
+.ui-content {
+  background-color: #31363f;
+}
+.ui-content button.btn-custom {
+  background-color: #008067;
+  border-radius: 0;
+  border: none;
+  color: #b8d0d3;
+  margin: auto;
+  text-shadow: none;
+  font-weight: lighter;
+}
+.ui-content button.btn-custom:hover {
+  background-color: #75a4aa;
+  color: #005141;
+  text-shadow: none;
+}
+.ui-content button.btn-custom.large {
+  width: 90%;
+}
+.ui-content button.btn-custom.small {
+  width: 120px;
+}
+.ui-content img.location {
+  width: 100%;
+}
+.ui-content h1,
+.ui-content h2,
+.ui-content h3,
+.ui-content h4,
+.ui-content h5,
+.ui-content h6,
+.ui-content p {
+  color: #b8d0d3;
+  text-shadow: none;
+}
+/* PANELS */
+#listview ul li img {
+  margin-top: 10px;
+}
+#listview ul li.ui-btn {
+  min-height: 5em;
+  background-color: transparent;
+  border: none;
+  border-top: 2px solid #25282f;
+  padding-top: 10px;
+  margin-bottom: 26px;
+}
+#listview ul li.ui-btn h3 {
+  text-align: left;
+  padding: 0 1em;
+}
+#listview ul li.ui-btn p {
+  text-align: left;
+  padding: 0 1.4em;
+}
+#listview ul li.ui-btn div.thumb-content {
+  width: 83px;
+  height: 83px;
+  display: inline-block;
+  float: left;
+  background-size: cover;
+  background-position: center;
 }
