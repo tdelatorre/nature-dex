@@ -2,16 +2,20 @@
 (function ( scope, $ ) {
     'use strict';
 
-    var position = {};
+    var _position = {};
     var group = '';
     var kingdom = '';
 
     var Services = new Klass();
     Services.extend({
-        loadedData: null,
+        loadedList: null,
+        loadedFile: null,
         loadedView: null,
-        getLoadedData: function () {
-            return this.loadedData;
+        getLoadedList: function () {
+            return this.loadedList;
+        },
+        getLoadedFile: function () {
+            return this.loadedFile;
         },
         getLoadedView: function () {
             return this.loadedView;
@@ -32,13 +36,13 @@
             // Showing loader
 
             navigator.geolocation.getCurrentPosition( function ( position ) {
-                position = {
+                _position = {
                     lat: position.coords.latitude,
                     lon: position.coords.longitude
                 };
 
                 $( 'button.btn-whereami' ).hide()
-                $('img').attr('src', "http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=400x100&maptype=terrain&markers=color:red%7C" + position['lat'] + "," + position['lon'] + "&sensor=false")
+                $('img').attr('src', "http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=600x200&maptype=terrain&markers=color:red%7C" + _position['lat'] + "," + _position['lon'] + "&sensor=false")
             });
         }
     });
@@ -50,22 +54,22 @@
             // Showing loader
 
             navigator.geolocation.getCurrentPosition( function ( position ) {
-                position = {
+                _position = {
                     lat: position.coords.latitude,
                     lon: position.coords.longitude
                 };
 
-                var promise = Specimenes.getSpecimenes(position['lon'], position['lat'], group, kingdom);
+                var promise = Specimenes.getSpecimenes(_position['lon'], _position['lat'], group, kingdom);
                 promise.done(function ( specimenes ) {
 
-                    Services.loadedData = {
+                    Services.loadedList = {
                         label: 'Ver todo',
                         specimenes: specimenes
                     }
 
                     // Navigation
 
-                    $.mobile.changePage( 'listview/' , {
+                    $.mobile.changePage( Services.getLocation() + 'listview/' , {
                         type: 'get'
                     });
                 });
@@ -91,12 +95,20 @@
 
     var SpecimenById = new Klass();
     SpecimenById.extend({
-        data: {},
         getSpecimenById: function (specimenId) {
             var client = new $.RestClient('/api/');
             client.add('specimenes');
             client.specimenes.read(specimenId).done(function ( data ) {
-                SpecimenById.data = data;
+                Services.loadedFile = {
+                    label: 'Ver ficha',
+                    specimen: data
+                }
+
+                // Navigation
+
+                $.mobile.changePage( Services.getLocation() + 'file/' , {
+                    type: 'get'
+                });
             });
         }
     });
@@ -107,6 +119,8 @@
         scope.SeeAll = SeeAll;
     if ( !('Specimenes' in scope) )
         scope.Specimenes = Specimenes;
+    if ( !('SpecimenById' in scope) )
+        scope.SpecimenById = SpecimenById;
     if ( !('Services' in scope) )
         scope.Services = Services;
 

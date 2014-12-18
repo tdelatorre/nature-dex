@@ -2,52 +2,50 @@
 (function ( scope, $ ) {
     'use strict';
 
+    var _$view = null;
+
     var Ficha = new Klass();
     Ficha.extend({
         init: function () {
             console.log( 'Ficha::init' );
 
+            _$view = $('#file');
+
             // Render data
-            var data = Services.getLoadedData();
+            var data = Services.getLoadedFile();
 
-            console.log( 'Services::', data );
-
-            for ( var specimen in data.specimenes.results) {
-                var obj = data.specimenes.results[specimen];
-
-                // Datos para renderizarcontent-list
-                var image = (obj.specimen_image !== null) ? obj.specimen_image : Services.getLocation() + 'static/image/animal_fallback.jpg';
-                var specimenId = obj.id;
-                var commonName = obj.common_name;
-                var scientificName = obj.scientific_name;
-                var html = '<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">'
-                html += '<div class="ui-btn-inner ui-li" aria-hidden="true">';
-                html += '<div class="ui-btn-text">';
-                html += '<a href="#" class="ui-link-inherit" data-specimen-id="' + specimenId + '">';
-                html += '    <img src="' + image + '" class="ui-li-thumb">';
-                html += '        <h3 class="ui-li-heading">' + scientificName + '</h3>';
-                html += '        <p class="ui-li-desc">' + commonName + '</p>';
-                html += '        </a>';
-                html += '</div>';
-                html += '<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>';
-                html += '</div>';
-                html += '</li>';
-
-                console.log( 'specimen', obj.scientific_name );
-                $( '#listview' ).find( '#content-list' ).append( html );
+            var specimenImage = data.specimen.specimen_image;
+            if ( specimenImage === null ) {
+                if ( data.specimen.kingdom === 'Animalia' ) {
+                    specimenImage = Services.getLocation() + 'static/images/animal_fallback.jpg';
+                }
+                else if ( data.specimen.kingdom === 'Plantae' ) {
+                    specimenImage = Services.getLocation() + 'static/images/leaf_fallback.png';
+                }
             }
 
-            // Eventos de la lista
-            $( '#listview' ).find( '#content-list' ).find( 'li a' ).on( 'click', function ( event ) {
+            var trackImage = data.specimen.track_image;
+            if ( trackImage === null) {
+                trackImage = Services.getLocation() + 'static/images/track_fallback.jpg';
+            }
 
-                var specimenId = $(this).attr( 'data-specimen-id' );
+            if ( data.specimen.kingdom === 'Plantae' ) {
+                _$view.find( 'div.trackImageContent img').hide();
+            }
 
-                console.log( specimenId );
+            console.log( 'Ficha::Services::', data );
+            console.log( 'Vista::', _$view.find( 'span.commonName' ) );
+            _$view.find( 'span.commonName' ).html(data.specimen.common_name);
+            _$view.find( 'span.scientificName' ).html(data.specimen.scientific_name);
+            _$view.find( 'div.specimentImageContent img').attr( 'src', specimenImage);
+            _$view.find( 'span.identification').attr( 'src', data.specimen.identification);
+            _$view.find( 'div.trackImageContent img').attr( 'src', trackImage);
+            _$view.find( 'span.kingdom' ).html(data.specimen.kingdom);
+            _$view.find( 'span.group' ).html(data.specimen.group);
+            _$view.find( 'span.family' ).html(data.specimen.family);
+            _$view.find( 'span.species' ).html(data.specimen.species);
 
-                $.mobile.changePage( window.location.protocol + '//' + window.location.host +  '/file/', true);
-                
-                event.preventDefault();
-            });
+            // Eventos de la ficha
         }
     });
 

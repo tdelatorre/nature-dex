@@ -1,4 +1,4 @@
-/* global Klass, Services, jQuery, console */
+/* global Klass, SpecimenById, Services, jQuery, console */
 (function ( scope, $ ) {
     'use strict';
 
@@ -8,29 +8,30 @@
             console.log( 'ListView::init' );
 
             // Render data
-            var data = Services.getLoadedData();
+            var data = Services.getLoadedList();
 
-            console.log( 'Services::', data );
+            console.log( 'ListView::Services::', data );
 
             for ( var specimen in data.specimenes.results) {
                 var obj = data.specimenes.results[specimen];
 
                 // Datos para renderizarcontent-list
-                var image = (obj.specimen_image !== null) ? obj.specimen_image : Services.getLocation() + 'static/image/animal_fallback.jpg';
+                var image = (obj.specimen_image !== null) ? obj.specimen_image : Services.getLocation() + 'static/images/animal_fallback.jpg';
                 var specimenId = obj.id;
                 var commonName = obj.common_name;
                 var scientificName = obj.scientific_name;
-                var html = '<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">'
-                html += '<div class="ui-btn-inner ui-li" aria-hidden="true">';
-                html += '<div class="ui-btn-text">';
-                html += '<a href="#" class="ui-link-inherit" data-specimen-id="' + specimenId + '">';
-                html += '    <img src="' + image + '" class="ui-li-thumb">';
-                html += '        <h3 class="ui-li-heading">' + scientificName + '</h3>';
-                html += '        <p class="ui-li-desc">' + commonName + '</p>';
-                html += '        </a>';
-                html += '</div>';
-                html += '<span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>';
-                html += '</div>';
+                var html = '';
+                html += '<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">';
+                html += '    <div class="ui-btn-inner ui-li" aria-hidden="true">';
+                html += '        <div class="ui-btn-text">';
+                html += '            <a href="#" class="ui-link-inherit" data-specimen-id="' + specimenId + '">';
+                html += '                <img src="' + image + '" class="ui-li-thumb">';
+                html += '                <h3 class="ui-li-heading">' + scientificName + '</h3>';
+                html += '                <p class="ui-li-desc">' + commonName + '</p>';
+                html += '            </a>';
+                html += '        </div>';
+                html += '        <span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>';
+                html += '    </div>';
                 html += '</li>';
 
                 console.log( 'specimen', obj.scientific_name );
@@ -44,7 +45,7 @@
 
                 console.log( specimenId );
 
-                $.mobile.changePage( window.location.protocol + '//' + window.location.host +  '/file/', true);
+                SpecimenById.getSpecimenById(specimenId);
                 
                 event.preventDefault();
             });

@@ -23,13 +23,6 @@
                 SeeAll.seeall();
             });
 
-        // Función por defecto de los enlaces [res="external"]
-        $( 'a[rel="external"]' )
-            .off( 'click' )
-            .on( 'click' , function ( event ) {
-
-            });
-
         switch(_viewName){
             case 'listview':
                 _view = ListView;
