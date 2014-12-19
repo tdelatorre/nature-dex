@@ -11,6 +11,10 @@
 
             _$view = $('#file');
 
+            _$view.find( 'button#back' ).on( 'click', function ( event ) {
+                $.mobile.changePage( Services.getLocation() + 'listview/');
+            });
+
             // Render data
             var data = Services.getLoadedFile();
 

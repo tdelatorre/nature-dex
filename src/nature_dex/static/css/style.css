@@ -92,6 +92,12 @@ html body .ui-group-theme-a .ui-bar-inherit {
   color: #005141;
   text-shadow: none;
 }
+.ui-content button.btn-custom.medium {
+  width: 220px;
+}
+.ui-content button.btn-custom.left {
+  float: left;
+}
 .ui-content button.btn-custom.large {
   width: 90%;
 }
@@ -119,6 +125,11 @@ html body .ui-group-theme-a .ui-bar-inherit {
   font-weight: lighter;
 }
 /* PANELS */
+#home h1 {
+  color: #7fb58b;
+  font-size: 1.8em;
+  text-align: center;
+}
 #panelmenu {
   top: 64px;
   box-shadow: none;
@@ -158,6 +169,12 @@ html body .ui-group-theme-a .ui-bar-inherit {
 #panelsearch {
   top: 64px;
   box-shadow: none;
+}
+#file div.toolbar {
+  width: 100%;
+  clear: both;
+  padding-top: 10px;
+  border-top: 2px solid #25282f;
 }
 #file div.specimentImageContent {
   padding: 10px;
@@ -212,6 +229,9 @@ html body .ui-group-theme-a .ui-bar-inherit {
   font-style: oblique;
   font-weight: lighter;
 }
+#listview h1 {
+  text-align: center;
+}
 #listview div.pagination {
   width: 320px;
   margin: auto;
@@ -247,6 +267,7 @@ html body .ui-group-theme-a .ui-bar-inherit {
   text-align: left;
   padding: 0 1em;
   color: #7fb58b;
+  font-family: 'Conv_Purisa';
 }
 #listview ul li.ui-btn p {
   text-align: left;
