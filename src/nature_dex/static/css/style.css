@@ -103,6 +103,7 @@ html body .ui-group-theme-a .ui-bar-inherit {
 }
 .ui-content button.btn-custom.small {
   width: 110px;
+  font-size: 13px;
 }
 .ui-content img.location {
   width: 100%;

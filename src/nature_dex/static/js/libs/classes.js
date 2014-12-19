@@ -37,8 +37,10 @@
 
             navigator.geolocation.getCurrentPosition( function ( position ) {
                 _position = {
-                    lat: position.coords.latitude,
-                    lon: position.coords.longitude
+                    //lat: position.coords.latitude,
+                    //lon: position.coords.longitude
+                    lat: '40.4360407',
+                    lon: '-3.6713546'
                 };
 
                 $( 'button.btn-whereami' ).hide();
@@ -53,7 +55,7 @@
     SeeAll.extend({
         lastData: {},
         seeall: function ( group, kingdom ) {
-            
+
             // Showing loader
 
             var promise = Specimenes.getSpecimenes(_position.lon, _position.lat, group, kingdom);
@@ -67,7 +69,12 @@
                     _label = group;
                 }
                 else if ( typeof kingdom !== 'undefined' ) {
-                    _label = kingdom;
+                    if ( kingdom === 'Animalia') {
+                        _label = 'Fauna';
+                    }
+                    else if ( kingdom === 'Plantae') {
+                        _label = 'Flora';
+                    }
                 }
                 else {
                     _label = 'Ver todo';
@@ -164,7 +171,7 @@
             var client = new $.RestClient('/api/');
             client.add('specimenes');
             client.specimenes.read(specimenId).done(function ( data ) {
-                
+
                 Services.loadedFile = {
                     label: 'Ver ficha',
                     specimen: data
