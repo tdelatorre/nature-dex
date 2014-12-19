@@ -99,7 +99,7 @@
                 promise.done(function ( specimenes ) {
 
                     callback( specimenes );
-                }); 
+                });
             }
             else {
                 var result = {
@@ -110,12 +110,12 @@
                 client.add( 'specimenes' );
 
                 // Recogemos el primer resultado
-                var promise = client.specimenes.read( 1363232 );
+                var promise = client.specimenes.read( 733194 );
                 promise.done(function ( data ) {
 
                     result.results.push( data );
 
-                    var secondPromise = client.specimenes.read( 1946204 );
+                    var secondPromise = client.specimenes.read( 734474 );
                     secondPromise.done( function ( data ) {
 
                         result.results.push( data );
