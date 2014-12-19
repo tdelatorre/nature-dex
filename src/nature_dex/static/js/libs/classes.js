@@ -94,11 +94,37 @@
         },
         getFirstResults: function ( callback ) {
 
-            var promise = Specimenes.getSpecimenes(_position.lon, _position.lat);
-            promise.done(function ( specimenes ) {
+            if ( _position.hasOwnProperty( 'lat' ) && _position.hasOwnProperty( 'lon' ) ) {
+                var promise = Specimenes.getSpecimenes(_position.lon, _position.lat);
+                promise.done(function ( specimenes ) {
 
-                callback( specimenes );
-            });        },
+                    callback( specimenes );
+                }); 
+            }
+            else {
+                var result = {
+                    results: []
+                }
+
+                var client = new $.RestClient('/api/');
+                client.add( 'specimenes' );
+
+                // Recogemos el primer resultado
+                var promise = client.specimenes.read( 1363232 );
+                promise.done(function ( data ) {
+
+                    result.results.push( data );
+
+                    var secondPromise = client.specimenes.read( 1946204 );
+                    secondPromise.done( function ( data ) {
+
+                        result.results.push( data );
+
+                        callback( result );
+                    });
+                });
+            }
+        },
         next: function ( callback ) {
 
 
