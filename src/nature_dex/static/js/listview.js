@@ -15,6 +15,10 @@
         var title = data.label;
         _$view.find( 'h1.title' ).html( title );
 
+        if ( data.specimenes.count <= 10 ) {
+            _$view.find('div.pagination').hide();
+        }
+
         if ( data.specimenes.previous === null) {
             _page = 1;
         }
@@ -31,8 +35,8 @@
         console.log(data.specimenes.results);
 
         if (!data.specimenes.results.length) {
-            var html = '<p>No hemos encontrado nada</p>';
-            $( '#content-list' ).append( html );
+            var html = 'No hemos encontrado nada';
+            _$view.find( 'h1.title' ).html( html );
 
         } else {
             for ( var specimen in data.specimenes.results) {

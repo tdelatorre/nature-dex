@@ -105,6 +105,8 @@ hmtl, body {
 			margin: auto;
 			text-shadow: none;
 			font-weight: lighter;
+			// font-size: 13px;
+			// height: 42px;
 
 			&:hover {
 				background-color: #75a4aa;
@@ -166,6 +168,20 @@ hmtl, body {
 		color: #7fb58b;
 		font-size: 1.8em;
 		text-align: center;
+	}
+
+	div {
+
+		&.firstresults {
+
+			h2 {
+				margin-top: 15px;
+				padding-top: 15px;
+				font-size: 1em;
+				font-family: 'Conv_Purisa', sans-serif;
+				text-align: center;
+			}
+		}
 	}
 }
 
@@ -310,6 +326,10 @@ hmtl, body {
 		text-align: center;
 	}
 
+	p {
+		
+	}
+
 	div {
 
 		&.pagination {
@@ -332,63 +352,72 @@ hmtl, body {
 			}
 		}
 	}
-
-	// Listas
-	ul {
-
-		li {
-
-			img {
-				margin-top: 10px;
-			}
-
-			&.ui-btn {
-				min-height: 5em;
-				background-color: transparent;
-				border: none;
-				border-top: 2px solid #25282f;
-				padding-top: 10px;
-				margin-bottom: 26px;
-
-				a {
-					text-decoration: none;
-				}
-
-				h3 {
-					text-align: left;
-					padding: 0 1em;
-					color: #7fb58b;
-					font-family: 'Conv_Purisa';
-				}
-
-				p {
-					text-align: left;
-					padding: 0 1.4em;
-				}
-
-				div {
-
-					&.thumb-content {
-						width: 83px;
-						height: 83px;
-						display: inline-block;
-						float: left;
-						background-size: cover;
-						background-position: center;
-					}
-				}
-
-				h1 {
-
-				}
-			}
-		}
-	}
 }
 
 #panelsearch {
+
 }
 
 #panelmenu {
 
+}
+
+// Listas
+ul.specimenes-viewlist {
+	box-shadow: none;
+
+	li {
+		box-shadow: none;
+
+		&:hover {
+			background-color: transparent !important;
+			border-color: #25282f !important;
+		}
+
+		img {
+			margin-top: 10px;
+		}
+
+		&.ui-btn {
+			min-height: 5em;
+			background-color: transparent;
+			border: none;
+			border-top: 2px solid #25282f;
+			padding-top: 10px;
+			margin-bottom: 26px;
+
+			a {
+				text-decoration: none;
+				box-shadow: none;
+			}
+
+			h3 {
+				text-align: left;
+				padding: 0 1em;
+				color: #7fb58b;
+				font-family: 'Conv_Purisa';
+			}
+
+			p {
+				text-align: left;
+				padding: 0 1.4em;
+			}
+
+			div {
+
+				&.thumb-content {
+					width: 83px;
+					height: 83px;
+					display: inline-block;
+					float: left;
+					background-size: cover;
+					background-position: center;
+				}
+			}
+
+			h1 {
+
+			}
+		}
+	}
 }

@@ -27,7 +27,7 @@
 
     var Position = new Klass();
     Position.extend({
-        whereami: function () {
+        whereami: function ( callback ) {
             if ( !('navigator' in window) ) {
                 console.log( 'Your browser not support geolocation features' );
                 return;
@@ -43,6 +43,8 @@
 
                 $( 'button.btn-whereami' ).hide();
                 $('img').attr('src', 'http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=600x200&maptype=terrain&markers=color:red%7C' + _position.lat + ',' + _position.lon + '&sensor=false');
+
+                callback();
             });
         }
     });
@@ -54,43 +56,44 @@
             
             // Showing loader
 
-            navigator.geolocation.getCurrentPosition( function ( position ) {
-                _position = {
-                    lat: position.coords.latitude,
-                    lon: position.coords.longitude
+            var promise = Specimenes.getSpecimenes(_position.lon, _position.lat, group, kingdom);
+            promise.done(function ( specimenes ) {
+
+                SeeAll.lastData = specimenes;
+
+                var _label;
+
+                if ( typeof group !== 'undefined' ) {
+                    _label = group;
+                }
+                else if ( typeof kingdom !== 'undefined' ) {
+                    _label = kingdom;
+                }
+                else {
+                    _label = 'Ver todo';
+                }
+
+                Services.loadedList = {
+                    label: _label,
+                    specimenes: specimenes
                 };
 
-                var promise = Specimenes.getSpecimenes(_position.lon, _position.lat, group, kingdom);
-                promise.done(function ( specimenes ) {
+                // Navigation
 
-                    SeeAll.lastData = specimenes;
-
-                    var _label;
-
-                    if ( typeof group !== 'undefined' ) {
-                        _label = group;
-                    }
-                    else if ( typeof kingdom !== 'undefined' ) {
-                        _label = kingdom;
-                    }
-                    else {
-                        _label = 'Ver todo';
-                    }
-
-                    Services.loadedList = {
-                        label: _label,
-                        specimenes: specimenes
-                    };
-
-                    // Navigation
-
-                    $.mobile.changePage( Services.getLocation() + 'listview/?rand=' + Math.random() * 1000 , {
-                        type: 'get'
-                    });
+                $.mobile.changePage( Services.getLocation() + 'listview/?rand=' + Math.random() * 1000 , {
+                    type: 'get'
                 });
             });
         },
+        getFirstResults: function ( callback ) {
+
+            var promise = Specimenes.getSpecimenes(_position.lon, _position.lat);
+            promise.done(function ( specimenes ) {
+
+                callback( specimenes );
+            });        },
         next: function ( callback ) {
+
 
             if ( SeeAll.lastData.hasOwnProperty('next') ) {
                 if (SeeAll.lastData.next === null ) {

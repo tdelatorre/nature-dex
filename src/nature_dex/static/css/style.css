@@ -130,6 +130,13 @@ html body .ui-group-theme-a .ui-bar-inherit {
   font-size: 1.8em;
   text-align: center;
 }
+#home div.firstresults h2 {
+  margin-top: 15px;
+  padding-top: 15px;
+  font-size: 1em;
+  font-family: 'Conv_Purisa', sans-serif;
+  text-align: center;
+}
 #panelmenu {
   top: 64px;
   box-shadow: none;
@@ -249,10 +256,20 @@ html body .ui-group-theme-a .ui-bar-inherit {
 #listview div.pagination button {
   float: left;
 }
-#listview ul li img {
+ul.specimenes-viewlist {
+  box-shadow: none;
+}
+ul.specimenes-viewlist li {
+  box-shadow: none;
+}
+ul.specimenes-viewlist li:hover {
+  background-color: transparent !important;
+  border-color: #25282f !important;
+}
+ul.specimenes-viewlist li img {
   margin-top: 10px;
 }
-#listview ul li.ui-btn {
+ul.specimenes-viewlist li.ui-btn {
   min-height: 5em;
   background-color: transparent;
   border: none;
@@ -260,20 +277,21 @@ html body .ui-group-theme-a .ui-bar-inherit {
   padding-top: 10px;
   margin-bottom: 26px;
 }
-#listview ul li.ui-btn a {
+ul.specimenes-viewlist li.ui-btn a {
   text-decoration: none;
+  box-shadow: none;
 }
-#listview ul li.ui-btn h3 {
+ul.specimenes-viewlist li.ui-btn h3 {
   text-align: left;
   padding: 0 1em;
   color: #7fb58b;
   font-family: 'Conv_Purisa';
 }
-#listview ul li.ui-btn p {
+ul.specimenes-viewlist li.ui-btn p {
   text-align: left;
   padding: 0 1.4em;
 }
-#listview ul li.ui-btn div.thumb-content {
+ul.specimenes-viewlist li.ui-btn div.thumb-content {
   width: 83px;
   height: 83px;
   display: inline-block;
