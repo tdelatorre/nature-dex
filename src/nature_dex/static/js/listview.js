@@ -83,6 +83,7 @@
     var ListView = new Klass();
     ListView.extend({
         init: function () {
+            
             console.log( 'ListView::init' );
 
             // Recogery the view
