@@ -41,21 +41,21 @@ class Command(BaseCommand):
                 try:
                     fields_for_sp = self.parse_fields(row)
                     if fields_for_sp:
-                        specimen = Specimen.objects.filter(ext_ref=fields_for_sp['ext_ref'])
-                        if not specimen[0]:
-                            print(u'Creating speciment')
-                            Specimen.objects.create(
-                                ext_ref = fields_for_sp['ext_ref'],
-                                scientific_name = fields_for_sp['scientific_name'],
-                                group = fields_for_sp['group'],
-                                genus = fields_for_sp['genus'],
-                                species = fields_for_sp['species'],
-                                kingdom = fields_for_sp['kingdom'],
-                                division = fields_for_sp['division'],
-                                kind = fields_for_sp['kind'],
-                                order = fields_for_sp['order'],
-                                family = fields_for_sp['family'],
-                            )
+                        # specimen = Specimen.objects.filter(ext_ref=fields_for_sp['ext_ref'])
+                        # if not specimen[0]:
+                        print(u'Creating speciment')
+                        Specimen.objects.create(
+                            ext_ref = fields_for_sp['ext_ref'],
+                            scientific_name = fields_for_sp['scientific_name'],
+                            group = fields_for_sp['group'],
+                            genus = fields_for_sp['genus'],
+                            species = fields_for_sp['species'],
+                            kingdom = fields_for_sp['kingdom'],
+                            division = fields_for_sp['division'],
+                            kind = fields_for_sp['kind'],
+                            order = fields_for_sp['order'],
+                            family = fields_for_sp['family'],
+                        )
 
                 except Exception as ex:
                     print(u'**ERROR {}'.format(str(ex)))
