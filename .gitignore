@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 /src/media
 src/nature_dex/settings/local.py
+dump_nature.sql
 
 # C extensions
 *.so
