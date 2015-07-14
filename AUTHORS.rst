@@ -4,4 +4,5 @@ The PRIMARY AUTHORS are:
 - Esther Moreno <esther.moreno@kaleidos.net>
 - Adrián Cerezo <adrian.cerezo@101.es>
 - Andrés Moya <andres.moya@kaleidos.net>
+- Daniel Herrero <daniel.herrero@kaleidos.net>
 
