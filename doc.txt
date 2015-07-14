@@ -1,0 +1,39 @@
+DATOS DE ZONAS Y ESPECÍMENES:
+
+En WildDex tenemos dos carpetas con el nombre Malla10x10_p* y Malla10x10_c*, que contienen una malla de 10x10km para la peninsula y canarias respectivamente.
+Estas mallas están explicadas en el fichero con nombre IEET_Malla10*.
+También tenemos un fichero flora-fauna.csv que contiene las especies de animales y plantas de España.
+Con estos datos sabemos qué especies (animales y plantas) tenemos en cada zona.
+
+Para crear la base de datos y cargar los datos de las zonas y las especies, se tienen que seguir los siguientes pasos:
+
+1. Crear base de datos con extensión de postgis:
+createdb nature
+psql nature
+    nature=# CREATE EXTENSION postgis;
+
+2. Migración:
+python manage.py migrate
+
+3. Generar sql a partir de las Mallas:
+Si existen los ficheros mallap.sql y mallac.sql dentro de las carpetas de Malla10x10*, no hace falta generarlos.
+Si hiciera falta generarlos, habría que ejecutar dentro de cada carpeta de Malla10x10* el siguiente comando de postgis:
+shp2pgsql -d -s 4326 MALLA10X10_P.shp > mallap.sql (para la carpeta de Malla10x10_p*)
+shp2pgsql -d -s 4326 MALLA10X10_C.shp > mallac.sql (para la carpeta de Malla10x10_c*)
+
+4. Cargar sql de mallas en nuestra base de datos:
+psql nature < mallap.sql
+psql nature < mallac.sql
+
+5. Cargar zonas en nuestra base de datos:
+psql nature < insert_zones.sql
+
+6. Cargar especímenes y especímenes por zona en nuestra base de datos:
+python manage.py add_specimenes --file=ruta-fichero/flora-fauna.csv
+
+7. Crear superusuario de Django:
+Para comprobar que la carga se ha hecho correctamente.
+python manage.py createsuperuser (admin, admin)
+Entrar en el admin para verificar que la carga es correcta.
+También se puede hacer por postgres o con el pgAdmin.
+
