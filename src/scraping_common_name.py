@@ -20,10 +20,10 @@ found_counter = 0
 for row in rows:
     specie = row[0]
 # for row in rows[:1]:
-#     specie = "Linaria benitoi"
+#     specie = "Aquilegia vulgaris"
+    spanish_name = ""
     tot_counter += 1
     print("=====================")
-    print(specie)
 
     # Get common spanish name at Wikimedia Species
     url = "https://species.wikimedia.org/wiki/" + specie
@@ -34,18 +34,9 @@ for row in rows:
 
     if res:
         spanish_wm_name = res.next_sibling
-    # else:
-    #     res = soup.find("b", text="English:")
-    #     # Trying to translate the common english name from Wikimedia
-    #     if res:
-    #         english_name = res.next_sibling
-    #         url = "https://translate.google.com/translate_a/single?client=t&sl=en&tl=es&dt=t&dt=at&ie=UTF-8&q="+english_name
-    #         page = requests.get(url, allow_redirects=False)
-    #         spanish_wm_name = str(page.content).split('"')[1]
-
-        print("=> " + spanish_wm_name.strip().capitalize())
         found_wm_counter += 1
         found_counter += 1
+        spanish_name = spanish_wm_name
 
     else:
         # Get common spanish name at Wikipedia
@@ -62,30 +53,31 @@ for row in rows:
         for child in res:
             # print(str(i))
             # print(str(child))
-            if (i == 2 or i == 4) and child.name != "table" and not spanish_wp_name :
+            if (i == 2 or i == 4 or i==12) and child.name != "table" and not spanish_wp_name :
                 if "Wikipedia aún no tiene una página" not in str(soup.findAll("b")[0]):
-                    dirty_spanish_wp_name = str(child.findAll("b")).capitalize().replace(specie.lower(),'')
+                    dirty_spanish_wp_name = str(child.findAll("b")).capitalize()
                     # print("=="+dirty_spanish_wp_name)
                     spanish_wp_name = dirty_spanish_wp_name.replace('b>','').translate(str.maketrans('','','[</>]'))
             i += 1
 
-        # "Not found" redirect at wikipedia. Example url: https://goo.gl/iF0pmo
         if not res and "no tiene una página llamada" not in str(soup.findAll("b")[0]):
-            # sometimes this other scrapping returns the valid common name from the top square of the web
+            # "Not found" redirect at wikipedia. Example url: https://goo.gl/iF0pmo
+            #  Sometimes this other scrapping returns the valid common name from the top square of the web
             res = list(soup.find("th", { "class" : "cabecera" }).children)[-1]
             if res:
-                print("econtrado!!!!")
                 spanish_wp_name = res.string
 
         if not spanish_wp_name:
-            print("No existen resultados")
+            # No results found
             not_found_wp_counter += 1
+            spanish_name = specie.strip().capitalize()
         else:
-            print("=> " + spanish_wp_name.strip().capitalize())
             found_wp_counter += 1
             if not spanish_wm_name:
+                spanish_name = spanish_wp_name
                 found_counter += 1
 
+    print(specie + ": " + spanish_name.strip().capitalize())
     print('Found: ' + str(found_counter) + ' of ' + str(tot_counter))
 
 print("=============================================")
@@ -118,7 +110,6 @@ print('Found at wikipedia: ' + str(found_wp_counter) + ' / Not found: ' + str(no
 # Rana catesbeiana (BAD TRANSLATION)
 # Acrocephalus melanopogon (UTF-8 problem)
 # Oncorhynchus kisutch (Segundos resultados Wikipedia)
-
 # Pipistrellus pipistrellus (P. pipistrellus, schreber, thomas, temminck)
 # Falco_peregrinus (F. peregrinus)
 # Anas crecca / Rattus norvegicus
