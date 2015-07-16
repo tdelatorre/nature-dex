@@ -22,8 +22,6 @@ for row in rows:
     scientific_name = row[0].lower().replace(' ', '-')
     scientific_name = scientific_name.replace('/', '-')
 
-    #~ url = "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + scientific_name + "&start=1"
-
     url = "http://www.bing.com/images/search?q=" + scientific_name
     url2 = "http://www.bing.com/images/search?q=" + scientific_name.split('-')[0]
 
@@ -37,7 +35,6 @@ for row in rows:
         filename = "{}.jpg".format(scientific_name)
         try:
             urlretrieve(image_url, "{}/images/{}".format(MEDIA_ROOT, filename))
-            # TODO: Queda guardarlo en la base de datos y asociarlo al fichero guardado.
             print("Image saved as {}".format(filename))
             found_counter += 1
         except (HTTPError, UnicodeEncodeError) as e:
@@ -47,7 +44,6 @@ for row in rows:
                 image_url = link[1].get('href')
                 try:
                     urlretrieve(image_url, "{}/images/{}".format(MEDIA_ROOT, filename))
-                    # TODO: Queda guardarlo en la base de datos y asociarlo al fichero guardado.
                     print("Image saved as {}".format(filename))
                     found_counter += 1
                 except (HTTPError, UnicodeEncodeError) as e:
@@ -58,7 +54,6 @@ for row in rows:
 
                         try:
                             urlretrieve(image_url, "{}/images/{}".format(MEDIA_ROOT, filename))
-                            # TODO: Queda guardarlo en la base de datos y asociarlo al fichero guardado.
                             print("Image saved as {}".format(filename))
                             found_counter += 1
                         except (HTTPError, UnicodeEncodeError) as e:
@@ -83,7 +78,6 @@ for row in rows:
             filename = "{}.jpg".format(scientific_name)
             try:
                 urlretrieve(image_url, "{}/images/{}".format(MEDIA_ROOT, filename))
-                # TODO: Queda guardarlo en la base de datos y asociarlo al fichero guardado.
                 print("Image saved as {}".format(filename))
                 found_counter += 1
             except (HTTPError, UnicodeEncodeError) as e:
@@ -94,7 +88,6 @@ for row in rows:
 
                     try:
                         urlretrieve(image_url, "{}/images/{}".format(MEDIA_ROOT, filename))
-                        # TODO: Queda guardarlo en la base de datos y asociarlo al fichero guardado.
                         print("Image saved as {}".format(filename))
                         found_counter += 1
                     except (HTTPError, UnicodeEncodeError) as e:
@@ -105,7 +98,6 @@ for row in rows:
 
                             try:
                                 urlretrieve(image_url, "{}/images/{}".format(MEDIA_ROOT, filename))
-                                # TODO: Queda guardarlo en la base de datos y asociarlo al fichero guardado.
                                 print("Image saved as {}".format(filename))
                                 found_counter += 1
                             except (HTTPError, UnicodeEncodeError) as e:
