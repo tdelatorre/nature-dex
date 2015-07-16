@@ -43,7 +43,7 @@
             _$view.find( 'span.scientificName' ).html(data.specimen.scientific_name);
             _$view.find( 'div.specimentImageContent img').attr( 'src', specimenImage);
             _$view.find( 'p.identification').html(data.specimen.identification);
-            _$view.find( 'div.trackImageContent img').attr( 'src', trackImage);
+            //~ _$view.find( 'div.trackImageContent img').attr( 'src', trackImage);
             _$view.find( 'span.kingdom' ).html(data.specimen.kingdom);
             _$view.find( 'span.group' ).html(data.specimen.group);
             _$view.find( 'span.family' ).html(data.specimen.family);
