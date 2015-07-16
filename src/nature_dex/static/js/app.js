@@ -69,7 +69,7 @@
             $( '#content-list' ).append( html );
 
         } else {
-            
+
             var i = 0;
             for ( var specimen in data.results) {
 
@@ -89,7 +89,7 @@
                 html += '                <div class="thumb-content" style="background-image: url(' + image + ')"></div>';
                 html += '                <h3 class="ui-li-heading">' + commonName + '</h3>';
                 html += '                <p class="ui-li-desc">' + scientificName + '</p>';
-                html += '                <p class="ui-li-desc">' + identification + '</p>';
+                //~ html += '                <p class="ui-li-desc">' + identification + '</p>';
                 html += '            </a>';
                 html += '        </div>';
                 html += '        <span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>';
@@ -98,9 +98,9 @@
 
                 console.log( 'specimen', obj.scientific_name );
                 _$view.find( '#home-content-list' ).append( html );
-                
+
                 i++;
-                if (i > 1) { break; } 
+                if (i > 1) { break; }
             }
         }
 
