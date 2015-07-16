@@ -110,12 +110,12 @@
                 client.add( 'specimenes' );
 
                 // Recogemos el primer resultado
-                var promise = client.specimenes.read( 733194 );
+                var promise = client.specimenes.read( 311392 );
                 promise.done(function ( data ) {
 
                     result.results.push( data );
 
-                    var secondPromise = client.specimenes.read( 734474 );
+                    var secondPromise = client.specimenes.read( 478802 );
                     secondPromise.done( function ( data ) {
 
                         result.results.push( data );
