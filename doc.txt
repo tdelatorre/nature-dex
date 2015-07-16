@@ -18,8 +18,8 @@ python manage.py migrate
 3. Generar sql a partir de las Mallas:
 Si existen los ficheros mallap.sql y mallac.sql dentro de las carpetas de Malla10x10*, no hace falta generarlos.
 Si hiciera falta generarlos, habría que ejecutar dentro de cada carpeta de Malla10x10* el siguiente comando de postgis:
-shp2pgsql -d -s 4326 MALLA10X10_P.shp > mallap.sql (para la carpeta de Malla10x10_p*)
-shp2pgsql -d -s 4326 MALLA10X10_C.shp > mallac.sql (para la carpeta de Malla10x10_c*)
+shp2pgsql -d -s 25830:4326 MALLA10X10_P.shp > mallap.sql (para la carpeta de Malla10x10_p*)
+shp2pgsql -d -s 32628:4326 MALLA10X10_C.shp > mallac.sql (para la carpeta de Malla10x10_c*)
 
 4. Cargar sql de mallas en nuestra base de datos:
 psql nature < mallap.sql
