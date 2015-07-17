@@ -3,6 +3,8 @@ from nature_dex.models import Specimen
 from bs4 import BeautifulSoup
 import requests
 
+# That command does web scraping from scientific name in wikipedia and saves the common name
+
 class Command(BaseCommand):
     args = ''
     help = 'Add common name'

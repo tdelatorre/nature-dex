@@ -4,6 +4,8 @@ from django.core.management.base import BaseCommand
 
 from nature_dex.models import Specimen
 
+# That command saves in the field specimen_image, the str form by "images/" + scientific_name
+# formated in a correct way
 
 class Command(BaseCommand):
     args = ''

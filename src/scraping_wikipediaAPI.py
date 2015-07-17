@@ -3,6 +3,11 @@ import requests
 import psycopg2
 import json
 
+# Not in use!!!!
+# We are using the commands (scraping_common_name y scraping_description) in management folder
+
+# That script is for doing web scraping of the common name and description in wikipedia
+# from API
 
 def find_between(s, first, last ):
     try:

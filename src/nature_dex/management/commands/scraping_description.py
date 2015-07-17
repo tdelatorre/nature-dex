@@ -9,6 +9,7 @@ from urllib.error import HTTPError
 
 from nature_dex.models import Specimen
 
+# That command does web scraping from scientific name in wikipedia and saves the description
 
 class Command(BaseCommand):
     args = ''

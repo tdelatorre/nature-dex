@@ -7,6 +7,9 @@ from nature_dex.models import Specimen, Zone, SpecimenByZone
 from optparse import make_option
 import csv
 
+# That command read of flora-fauna.csv (as file) and creates specimenes
+# and speciemenes by zone
+
 CSV_SETTINGS = {
     'delimiter': ',',
     'lineterminator': '"',
@@ -15,7 +18,6 @@ CSV_SETTINGS = {
 class Command(BaseCommand):
     args = ''
     help = 'Import speciments'
-    #output_transaction = True
     option_list = BaseCommand.option_list + (
         make_option(
             "-f",
@@ -41,8 +43,6 @@ class Command(BaseCommand):
                 try:
                     fields_for_sp = self.parse_fields(row)
                     if fields_for_sp:
-                        # specimen = Specimen.objects.filter(ext_ref=fields_for_sp['ext_ref'])
-                        # if not specimen[0]:
                         print(u'Creating speciment')
                         Specimen.objects.create(
                             ext_ref = fields_for_sp['ext_ref'],
