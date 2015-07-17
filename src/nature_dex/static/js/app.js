@@ -80,7 +80,7 @@
                 var specimenId = obj.id;
                 var commonName = obj.common_name;
                 var scientificName = obj.scientific_name;
-                var identification = obj.identification;
+                var group = obj.group;
                 var html = '';
                 html += '<li data-theme="c" class="ui-btn ui-li ui-li-has-thumb ui-btn-up-c">';
                 html += '    <div class="ui-btn-inner ui-li" aria-hidden="true">';
@@ -89,7 +89,7 @@
                 html += '                <div class="thumb-content" style="background-image: url(' + image + ')"></div>';
                 html += '                <h3 class="ui-li-heading">' + commonName + '</h3>';
                 html += '                <p class="ui-li-desc">' + scientificName + '</p>';
-                //~ html += '                <p class="ui-li-desc">' + identification + '</p>';
+                html += '                <p class="ui-li-desc">Grupo: ' + group + '</p>';
                 html += '            </a>';
                 html += '        </div>';
                 html += '        <span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span>';
