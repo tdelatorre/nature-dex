@@ -121,6 +121,7 @@ class Specimen(models.Model):
     class Meta:
         verbose_name = _(u'Specimen')
         verbose_name_plural = _(u'Specimenes')
+        ordering = ['common_name']
 
     def __unicode__(self):
         return _(u'specimen "{}"').format(self.scientific_name)
