@@ -37,3 +37,15 @@ python manage.py createsuperuser (admin, admin)
 Entrar en el admin para verificar que la carga es correcta.
 También se puede hacer por postgres o con el pgAdmin.
 
+
+DATOS PARA ESPECÍMENES:
+
+Necesitamos nombres comunes, descripciones e imágenes y para ello hemos hecho web scraping, de la wikipedia principalmente.
+Tenemos los siguientes commands:
+
+- scraping_common_name: Para obtener los nombres comunes a partir del nombre científico.
+- scraping_description: Para obtener la descripción a partir del nombre científico.
+- scraping_photo: Para obtener una imagen a partir del nombre científico.
+    - Después de la carga de imágenes hay que ejecutar add_image_name que añade el nombre de la imagen al campo specimen_image.
+
+Estos datos hay que revisarlos para ver si son correctos.
