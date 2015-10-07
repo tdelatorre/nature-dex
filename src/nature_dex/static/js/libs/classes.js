@@ -43,7 +43,7 @@
                     lon: '-3.6713546'
                 };
 
-                $( 'button.btn-whereami' ).hide();
+                //$( 'button.btn-whereami' ).hide();
                 $('img').attr('src', 'http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=600x200&maptype=terrain&markers=color:red%7C' + _position.lat + ',' + _position.lon + '&sensor=false');
 
                 callback();

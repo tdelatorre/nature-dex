@@ -2,16 +2,17 @@
 {% block content %}
 
 <div data-role="content" id="home">
-	<h1>Descubre la fauna y flora de tu zona</h1>
-	<button class="btn-custom large btn-whereami">Localízame</button>
+    <h1>Descubre la fauna y flora de tu zona</h1>
+
     <img class="location" src=""/>
+    <button class="btn-custom large btn-whereami">Localízame</button>
     <div class="firstresults">
-    	<h2>Puedes encontrar...</h2>
-    	<div class="content-list">
-    		<ul data-role="listview" data-inset="true" id="home-content-list" class="specimenes-viewlist"></ul>
-    	</div>
+        <h2>Puedes encontrar...</h2>
+        <div class="content-list">
+            <ul data-role="listview" data-inset="true" id="home-content-list" class="specimenes-viewlist"></ul>
+        </div>
     </div>
-    <button class="btn-custom large btn-see-all">Ver todo</button>
+    <button class="btn-custom large btn-see-all" href="">Ver todo</button>
 </div><!-- /content -->
 
 {% endblock %}
