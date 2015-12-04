@@ -1,4 +1,12 @@
 /* global jQuery, Position, console */
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 (function ( $ ) {
     'use strict';
 
@@ -7,6 +15,16 @@
     $( document )
     .off( 'pagebeforechange', appBeforeChange )
     .on( 'pagebeforechange', appBeforeChange )
+    .on('ready', function() {
+      if (window.location.href.indexOf(Services.getLocation() + 'listview/') !== -1) {
+        var page = getParameterByName('page');
+        SeeAll.seeall(null, null, page).then(function() {
+          Services.viewName = $('.ui-content').attr('id');
+          Services.view = ListView;
+          ListView.init();
+        });
+      }
+    })
     .on( 'pagecontainershow', function(){
         console.log( 'app.pagecontainershow' );
 
@@ -21,22 +39,27 @@
         $( 'button.btn-see-all' )
             .off( 'click' )
             .on( 'click', function ( event ) {
-                SeeAll.seeall();
+              $.mobile.changePage( Services.getLocation() + 'listview', {
+                type: 'get'
+              });
             });
 
         getResults();
 
         switch(Services.viewName){
-            case 'listview':
-                Services.view = ListView;
-                ListView.init();
-                break;
-            case 'file':
-                Services.view = Ficha;
-                Ficha.init();
-                break;
-            default:
-                break;
+          case 'listview':
+              SeeAll.seeall().then(function() {
+                 Services.viewName = $('.ui-content').attr('id');
+                 Services.view = ListView;
+                 ListView.init();
+              });
+              break;
+          case 'file':
+              Services.view = Ficha;
+              Ficha.init();
+              break;
+          default:
+              break;
         }
     });
 
@@ -56,6 +79,7 @@
         }
 
         var $page = $(data.toPage[0]);
+
         console.log( 'Página cargada: ', $page.find('.ui-content').attr('id') );
         Services.viewName = $page.find('.ui-content').attr('id');
     }

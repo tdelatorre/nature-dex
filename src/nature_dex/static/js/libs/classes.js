@@ -54,11 +54,11 @@
     var SeeAll = new Klass();
     SeeAll.extend({
         lastData: {},
-        seeall: function ( group, kingdom ) {
+        seeall: function ( group, kingdom, page ) {
 
             // Showing loader
 
-            var promise = Specimenes.getSpecimenes(_position.lon, _position.lat, group, kingdom);
+            var promise = Specimenes.getSpecimenes(_position.lon, _position.lat, group, kingdom, page);
             promise.done(function ( specimenes ) {
 
                 SeeAll.lastData = specimenes;
@@ -84,13 +84,9 @@
                     label: _label,
                     specimenes: specimenes
                 };
-
-                // Navigation
-
-                $.mobile.changePage( Services.getLocation() + 'listview/?rand=' + Math.random() * 1000 , {
-                    type: 'get'
-                });
             });
+
+            return promise;
         },
         getFirstResults: function ( callback ) {
 
@@ -134,7 +130,6 @@
                     return;
                 }
             }
-
             var promise = $.get( SeeAll.lastData.next );
             promise.done(function ( data ) {
 
@@ -151,7 +146,6 @@
             });
         },
         prev: function ( callback ) {
-
             if ( SeeAll.lastData.hasOwnProperty('previous') ) {
                 if ( SeeAll.lastData.previous === null ) {
                     callback( false );
@@ -179,14 +173,15 @@
     var Specimenes = new Klass();
     Specimenes.extend({
         data: {},
-        getSpecimenes: function (lon, lat, group, kingdom) {
+        getSpecimenes: function (lon, lat, group, kingdom, page) {
             var client = new $.RestClient('/api/');
             client.add('specimenes');
             return client.specimenes.read({
                 lon: lon,
                 lat: lat,
                 group: group,
-                kingdom: kingdom
+                kingdom: kingdom,
+                page: page
             });
         }
     });

@@ -3,10 +3,9 @@
     'use strict';
 
     var _$view = null;
-    var _page = 0;
+    var _page = getParameterByName('page') || 1;
 
     function renderList () {
-
         _$view.find( '#content-list' ).html( '' );
 
         // Render data
@@ -19,20 +18,7 @@
             _$view.find('div.pagination').hide();
         }
 
-        if ( data.specimenes.previous === null) {
-            _page = 1;
-        }
-        else if ( data.specimenes.next === null ) {
-            var preg = data.specimenes.previous.split('=');
-            _page = Number(preg[preg.length - 1]) + 1;
-        }
-        else {
-            var preg = data.specimenes.next.split('=');
-            _page = Number(preg[preg.length - 1]) - 1;
-        }
-
         console.log( 'ListView::Services::', data );
-        console.log(data.specimenes.results);
 
         if (!data.specimenes.results.length) {
             var html = 'No hemos encontrado nada';
@@ -87,7 +73,6 @@
     var ListView = new Klass();
     ListView.extend({
         init: function () {
-
             console.log( 'ListView::init' );
 
             // Recogery the view
@@ -106,11 +91,16 @@
             _$view.find( 'button.next' ).off().on( 'click', function ( event ) {
                 SeeAll.next( ListView.nextDataReceived() );
 
+                window.history.pushState({},"",Services.getLocation() + 'listview/?page=' + (Number(_page) + 1));
                 event.preventDefault();
             });
 
             _$view.find( 'button.prev' ).off().on( 'click', function ( event ) {
                 SeeAll.prev( ListView.prevDataReceived() );
+
+                if (Number(_page) > 1) {
+                  window.history.pushState({},"",Services.getLocation() + 'listview/?page=' + (Number(_page) - 1));
+                }
 
                 event.preventDefault();
             });
