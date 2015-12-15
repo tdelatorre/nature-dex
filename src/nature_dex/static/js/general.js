@@ -53,7 +53,15 @@
         event.preventDefault();
         var kingdom = $(event.target).data('kingdom');
         var group = $(event.target).data('group') !== '' ? $(event.target).data('group') : undefined;
-        SeeAll.seeall(group, kingdom);
+
+        $.mobile.changePage(Services.getLocation() + 'listview', {
+          type: 'get',
+          data: {
+            page: 1,
+            group: group,
+            kingdom: kingdom
+          }
+        });
     }
 
     function pageChange () {

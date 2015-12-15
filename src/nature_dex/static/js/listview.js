@@ -74,6 +74,7 @@
     ListView.extend({
         init: function () {
             console.log( 'ListView::init' );
+            _page = getParameterByName('page') || 1;
 
             // Recogery the view
             _$view = $( '#listview' );
@@ -91,15 +92,45 @@
             _$view.find( 'button.next' ).off().on( 'click', function ( event ) {
                 SeeAll.next( ListView.nextDataReceived() );
 
-                window.history.pushState({},"",Services.getLocation() + 'listview/?page=' + (Number(_page) + 1));
+                var group = getParameterByName('kingdom');
+                var kingdom = getParameterByName('group');
+
+                var params = [];
+
+                params.push('page=' + (Number(_page) + 1));
+
+                if(group) {
+                  params.push('group='+ group);
+                }
+
+                if(kingdom) {
+                  params.push('kingdom='+ kingdom);
+                }
+
+                window.history.pushState({},"",Services.getLocation() + 'listview/?' + params.join('&'));
                 event.preventDefault();
             });
 
             _$view.find( 'button.prev' ).off().on( 'click', function ( event ) {
                 SeeAll.prev( ListView.prevDataReceived() );
 
+                var group = getParameterByName('kingdom');
+                var kingdom = getParameterByName('group');
+
+                var params = [];
+
+                params.push('page=' + (Number(_page) - 1));
+
+                if(group) {
+                  params.push('group='+ group);
+                }
+
+                if(kingdom) {
+                  params.push('kingdom='+ kingdom);
+                }
+
                 if (Number(_page) > 1) {
-                  window.history.pushState({},"",Services.getLocation() + 'listview/?page=' + (Number(_page) - 1));
+                  window.history.pushState({},"",Services.getLocation() + 'listview/?' + params.join('&'));
                 }
 
                 event.preventDefault();

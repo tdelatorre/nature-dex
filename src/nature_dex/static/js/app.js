@@ -17,9 +17,12 @@ function getParameterByName(name) {
     .on( 'pagebeforechange', appBeforeChange )
     .on('ready', function() {
       if (window.location.href.indexOf(Services.getLocation() + 'listview/') !== -1) {
-        var page = getParameterByName('page');
-        SeeAll.seeall(null, null, page).then(function() {
-          Services.viewName = $('.ui-content').attr('id');
+        var page = getParameterByName('page') || 1;
+        var kingdom = getParameterByName('kingdom');
+        var group = getParameterByName('group');
+
+        SeeAll.seeall(group, kingdom, page).then(function() {
+          Services.viewName = 'listview';
           Services.view = ListView;
           ListView.init();
         });
@@ -48,8 +51,11 @@ function getParameterByName(name) {
 
         switch(Services.viewName){
           case 'listview':
-              SeeAll.seeall().then(function() {
-                 Services.viewName = $('.ui-content').attr('id');
+              var kingdom = getParameterByName('kingdom');
+              var group = getParameterByName('group');
+
+              SeeAll.seeall(group, kingdom, 1).then(function() {
+                 Services.viewName = 'listview';
                  Services.view = ListView;
                  ListView.init();
               });
