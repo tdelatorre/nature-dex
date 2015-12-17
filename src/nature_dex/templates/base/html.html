@@ -2,16 +2,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>{% block title %} WildDex {% endblock %}</title>
+    <title>{% block title %} WildDex {% endblock %}</title>
 
     <link rel="stylesheet" href="{% static 'js/libs/jquerymobile/jquery.mobile.custom.structure.min.css' %}">
     <link rel="stylesheet" href="{% static 'js/libs/jquerymobile/jquery.mobile.custom.theme.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-		<link href='http://fonts.googleapis.com/css?family=Roboto:400italic,700italic,300,700,300italic,400' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400italic,700italic,300,700,300italic,400' rel='stylesheet' type='text/css'>
     <script src="{% static 'js/libs/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'js/libs/jquery/jquery.rest.js' %}"></script>
     <script src="{% static 'js/libs/jquerymobile/jquery.mobile.custom.min.js' %}"></script>
@@ -31,13 +31,13 @@
 </head>
 <body>
 
-	<div data-role="page">
+    <div data-role="page">
 
-		{% block panelmenu %}
+        {% block panelmenu %}
 
-		<div id="panelmenu" data-role="panel" data-id="panelmenu1" data-position="right" data-position-fixed="true" data-display="overlay" class="panelmenu">
-			<ul data-role="listview" data-inset="true">
-				<li class="kingdom-menu"><a href="#menu" class="panelmenu-link" data-kingdom="Animalia" data-group="">Fauna</a></li>
+        <div id="panelmenu" data-role="panel" data-id="panelmenu1" data-position="right" data-position-fixed="true" data-display="overlay" class="panelmenu">
+            <ul data-role="listview" data-inset="true">
+                <li class="kingdom-menu"><a href="#menu" class="panelmenu-link" data-kingdom="Animalia" data-group="">Fauna</a></li>
                 <li><a href="#menu" class="panelmenu-link" data-kingdom="Animalia" data-group="Mamíferos">Mamíferos</a></li>
                 <li><a href="#menu" class="panelmenu-link" data-kingdom="Animalia" data-group="Aves">Aves</a></li>
                 <li><a href="#menu" class="panelmenu-link" data-kingdom="Animalia" data-group="Reptiles">Reptiles</a></li>
@@ -45,37 +45,37 @@
                 <li><a href="#menu" class="panelmenu-link" data-kingdom="Animalia" data-group="Peces continentales">Peces</a></li>
                 <li><a href="#menu" class="panelmenu-link" data-kingdom="Animalia" data-group="Invertebrados">Invertebrados</a></li>
                 <li class="kingdom-menu"><a href="#menu" class="panelmenu-link" data-kingdom="Plantae" data-group="">Flora</a></li>
-			</ul>
-		</div>
+            </ul>
+        </div>
 
-		{% endblock %}
+        {% endblock %}
 
-		{% block panelsearch %}
+        {% block panelsearch %}
 
-		<div id="panelsearch" data-role="panel" data-id="panelsearch1" data-position="right" data-position-fixed="true" data-display="overlay" class="panelsearch">
-			<ul data-role="listview" data-inset="true" data-filter="true">
-				<li><a href="#search" class="panelsearch-link">Mamíferos</a></li>
-				<li><a href="#search" class="panelsearch-link">Huellas</a></li>
-				<li><a href="#search" class="panelsearch-link">Invertebrados</a></li>
-			</ul>
-		</div>
+        <div id="panelsearch" data-role="panel" data-id="panelsearch1" data-position="right" data-position-fixed="true" data-display="overlay" class="panelsearch">
+            <ul data-role="listview" data-inset="true" data-filter="true">
+                <li><a href="#search" class="panelsearch-link">Mamíferos</a></li>
+                <li><a href="#search" class="panelsearch-link">Huellas</a></li>
+                <li><a href="#search" class="panelsearch-link">Invertebrados</a></li>
+            </ul>
+        </div>
 
-		{% endblock %}
+        {% endblock %}
 
-		{% block header %}
+        {% block header %}
 
-		<div data-role="header" data-id="header1" data-position-fixed="true" class="ui-btn-active ui-state-persist">
-			<a href="/" title="Home" class="logo"></a>
-			<a href="#panelmenu" class="toolbar-btn btn-panelmenu ui-btn ui-corner-all ui-icon-bars ui-nodisc-icon ui-btn-right">Menu</a>
-			<a href="#" class="toolbar-btn btn-panelsearch ui-btn ui-corner-all ui-icon-search ui-nodisc-icon ui-btn-right">Search</a>
-		</div><!-- /header -->
+        <div data-role="header" data-id="header1" data-position-fixed="true" class="ui-btn-active ui-state-persist">
+            <a href="/" title="Home" class="logo"></a>
+            <a href="#panelmenu" class="toolbar-btn btn-panelmenu ui-btn ui-corner-all ui-icon-bars ui-nodisc-icon ui-btn-right">Menu</a>
+            <!--<a href="#" class="toolbar-btn btn-panelsearch ui-btn ui-corner-all ui-icon-search ui-nodisc-icon ui-btn-right">Search</a>-->
+        </div><!-- /header -->
 
-		{% endblock %}
+        {% endblock %}
 
-		{% block content %}{% endblock %}
+        {% block content %}{% endblock %}
 
-	</div>
-	<!-- /page -->
+    </div>
+    <!-- /page -->
 
 </body>
 </html>
